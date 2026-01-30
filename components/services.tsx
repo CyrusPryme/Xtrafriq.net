@@ -4,6 +4,7 @@ import {
   Smartphone, 
   Building2, 
   LineChart, 
+  Shield,
   Users,
   Target,
   Rocket
@@ -14,7 +15,7 @@ const services = [
     icon: LayoutDashboard,
     title: "Product Strategy & Leadership",
     description: "End-to-end product lifecycle management from discovery to launch. We define roadmaps, OKRs, and execute with precision to deliver production-ready systems.",
-    featured: true,
+    featured: false,
   },
   {
     icon: Building2,
@@ -30,8 +31,20 @@ const services = [
   },
   {
     icon: Smartphone,
-    title: "Mobile & Web Applications",
-    description: "iOS, Android, and web platforms built for scale. From astrology apps with 30K+ users to e-commerce marketplaces, we deliver exceptional digital products.",
+    title: "Mobile & Web App Development",
+    description: "Native and cross-platform mobile apps plus responsive web applications. We deliver performant, maintainable code and production-ready deployments.",
+    featured: false,
+  },
+  {
+    icon: LineChart,
+    title: "Data Analytics & Insights",
+    description: "Analytics architecture, data pipelines, dashboards, and ML-driven insights. Turn raw data into actionable business metrics and product improvements.",
+    featured: true,
+  },
+  {
+    icon: Shield,
+    title: "Cybersecurity & Risk Management",
+    description: "Security assessments, threat modeling, secure SDLC practices, and incident readiness to protect systems and user data.",
     featured: false,
   },
   {

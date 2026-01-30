@@ -57,8 +57,8 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Phone</div>
-                  <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                    +1 (234) 567-890
+                  <a href="tel:+233243879212" className="text-muted-foreground hover:text-primary transition-colors">
+                    +233 243 879 212
                   </a>
                 </div>
               </div>

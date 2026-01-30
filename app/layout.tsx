@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -14,19 +15,37 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
+        url: '/african-motif.png',
+        media: '(prefers-color-scheme: light)'
       },
       {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
+        url: '/african-motif.png',
+        media: '(prefers-color-scheme: dark)'
+      }
+    ],
+    apple: '/african-motif.png',
+  },
+  openGraph: {
+    title: 'Xtrafriq Tech Consult | Product Management & Tech Services',
+    description: 'Expert product management and comprehensive tech services from Africa to the world. We build, scale, and optimize digital products with innovation and trust.',
+    url: 'https://your-domain.com',
+    siteName: 'Xtrafriq Tech Consult',
+    images: [
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Xtrafriq Tech Consult',
       },
     ],
-    apple: '/apple-icon.png',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Xtrafriq Tech Consult | Product Management & Tech Services',
+    description: 'Expert product management and comprehensive tech services from Africa to the world.',
+    images: ['/og-image.png'],
   },
 }
 
@@ -38,7 +57,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <div id="content">{children}</div>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

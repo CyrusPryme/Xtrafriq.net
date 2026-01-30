@@ -28,15 +28,15 @@ const projects = [
   },
   {
     icon: GraduationCap,
-    title: "NAFCO Distribution System",
-    client: "Ghana National Food Buffer Stock Company",
-    description: "Leading product discovery for a national food allocation and distribution management system. Designing centralized workflows for government allocation, supplier compliance, and school distribution.",
+    title: "GIZ Digital Skills Program",
+    client: "GIZ",
+    description: "Delivered a digital skills and capacity-building program including curriculum development, workshops, and a lightweight LMS to upskill local teams.",
     outcomes: [
-      "Stakeholder alignment achieved",
-      "MVP scope defined",
-      "Phased rollout strategy",
+      "200+ participants trained",
+      "Curriculum adopted by local partners",
+      "Improved digital literacy metrics",
     ],
-    tags: ["Government", "Discovery Phase", "National Scale"],
+    tags: ["Capacity Building", "Training", "Development"],
   },
   {
     icon: ShoppingCart,

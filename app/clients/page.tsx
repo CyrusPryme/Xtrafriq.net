@@ -8,37 +8,42 @@ export const metadata = {
   description: "Trusted by leading companies across Africa and beyond. See the organizations we've partnered with to deliver exceptional tech solutions.",
 }
 
-// Add your client logos here - just add the logo file to /public/clients/ and update this array
+// Client logos (using kebab-case filenames)
 const clients = [
   {
-    name: "Client Name 1",
-    logo: "/clients/client-1.png",
+    name: "Absolute Surge Group Ghana",
+    logo: "/clients/absolute-surge-group-ghana.jpg",
     category: "Technology",
   },
   {
-    name: "Client Name 2",
-    logo: "/clients/client-2.png",
-    category: "Finance",
+    name: "Farmer Torks",
+    logo: "/clients/farmer-torks.jpg",
+    category: "Agriculture",
   },
   {
-    name: "Client Name 3",
-    logo: "/clients/client-3.png",
-    category: "Healthcare",
+    name: "GIZ",
+    logo: "/clients/giz.png",
+    category: "Development",
   },
   {
-    name: "Client Name 4",
-    logo: "/clients/client-4.png",
+    name: "iStc Ghana",
+    logo: "/clients/istc-ghana.png",
+    category: "Software Development",
+  },
+  {
+    name: "KTZ",
+    logo: "/clients/ktz-logo.png",
+    category: "Technology",
+  },
+  {
+    name: "MyAfriqueMart",
+    logo: "/clients/my-afrique-mart.jpg",
     category: "E-commerce",
   },
   {
-    name: "Client Name 5",
-    logo: "/clients/client-5.png",
-    category: "Telecommunications",
-  },
-  {
-    name: "Client Name 6",
-    logo: "/clients/client-6.png",
-    category: "Education",
+    name: "Scorpio Mystique",
+    logo: "/clients/scorpio-mystique.jpeg",
+    category: "Retail",
   },
 ]
 
@@ -104,19 +109,15 @@ export default function ClientsPage() {
                   key={client.name}
                   className="group relative bg-card border border-border rounded-xl p-6 lg:p-8 flex flex-col items-center justify-center hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
-                  {/* Logo placeholder - replace with actual logo */}
+                  {/* Logo Display */}
                   <div className="w-full aspect-[3/2] relative mb-4 flex items-center justify-center bg-muted/50 rounded-lg overflow-hidden">
-                    <div className="text-muted-foreground/50 text-xs text-center px-2">
-                      Upload logo to<br />/public/clients/
-                    </div>
-                    {/* Uncomment when you add actual logos:
                     <Image
                       src={client.logo || "/placeholder.svg"}
                       alt={`${client.name} logo`}
                       fill
+                      sizes="(min-width: 1024px) 20vw, (min-width: 768px) 30vw, 45vw"
                       className="object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-300"
                     />
-                    */}
                   </div>
                   <h3 className="font-medium text-foreground text-center text-sm lg:text-base">
                     {client.name}
@@ -128,16 +129,7 @@ export default function ClientsPage() {
               ))}
             </div>
 
-            {/* Instructions for adding logos */}
-            <div className="mt-16 p-6 bg-secondary/50 rounded-xl border border-border">
-              <h3 className="font-semibold text-foreground mb-2">How to Add Client Logos</h3>
-              <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
-                <li>Upload your client logo images to the <code className="bg-muted px-1.5 py-0.5 rounded text-xs">/public/clients/</code> folder</li>
-                <li>Name them consistently (e.g., client-1.png, company-name.png)</li>
-                <li>Update the <code className="bg-muted px-1.5 py-0.5 rounded text-xs">clients</code> array in this file with the correct name, logo path, and category</li>
-                <li>Uncomment the Image component in the code to display the logos</li>
-              </ol>
-            </div>
+            {/* Instructional block removed — client logos are now displayed automatically. */}
           </div>
         </section>
 
