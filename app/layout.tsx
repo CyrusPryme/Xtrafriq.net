@@ -1,14 +1,14 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://xtrafriq.com'),
   title: 'Xtrafriq Tech Consult | Product Management & Tech Services',
   description: 'Expert product management and comprehensive tech services from Africa to the world. We build, scale, and optimize digital products with innovation and trust.',
   generator: 'v0.app',
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Xtrafriq Tech Consult | Product Management & Tech Services',
     description: 'Expert product management and comprehensive tech services from Africa to the world. We build, scale, and optimize digital products with innovation and trust.',
-    url: 'https://your-domain.com',
+    url: 'https://xtrafriq.com',
     siteName: 'Xtrafriq Tech Consult',
     images: [
       {
-        url: '/og-image.png',
+        url: '/african-motif.png',
         width: 1200,
         height: 630,
         alt: 'Xtrafriq Tech Consult',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Xtrafriq Tech Consult | Product Management & Tech Services',
     description: 'Expert product management and comprehensive tech services from Africa to the world.',
-    images: ['/og-image.png'],
+    images: ['/african-motif.png'],
   },
 }
 
@@ -55,9 +55,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system">
+    <html lang="en" className={geist.className} suppressHydrationWarning>
+      <body className="antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div id="content">{children}</div>
         </ThemeProvider>
         <Analytics />

@@ -28,13 +28,13 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-3">
-              <Link href="#services" className="text-background/70 hover:text-background transition-colors text-sm">
+              <Link href="/#services" className="text-background/70 hover:text-background transition-colors text-sm">
                 Services
               </Link>
-              <Link href="#about" className="text-background/70 hover:text-background transition-colors text-sm">
+              <Link href="/about" className="text-background/70 hover:text-background transition-colors text-sm">
                 About Us
               </Link>
-              <Link href="#contact" className="text-background/70 hover:text-background transition-colors text-sm">
+              <Link href="/#contact" className="text-background/70 hover:text-background transition-colors text-sm">
                 Contact
               </Link>
             </nav>

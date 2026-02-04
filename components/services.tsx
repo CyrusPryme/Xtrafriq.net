@@ -36,9 +36,9 @@ const services = [
     featured: false,
   },
   {
-    icon: LineChart,
-    title: "Data Analytics & Insights",
-    description: "Analytics architecture, data pipelines, dashboards, and ML-driven insights. Turn raw data into actionable business metrics and product improvements.",
+    icon: Target,
+    title: "Product Management & Strategy",
+    description: "End-to-end product strategy, roadmap development, OKR planning, and market fit validation. We help you define the right product and execute with precision.",
     featured: true,
   },
   {
@@ -54,7 +54,7 @@ const services = [
     featured: false,
   },
   {
-    icon: Target,
+    icon: Rocket,
     title: "Agile & Scrum Implementation",
     description: "Structured sprint planning, GitHub workflows, and QA gates that improve delivery predictability. We bring execution discipline to your development process.",
     featured: false,
@@ -63,14 +63,18 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 bg-secondary/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="services" className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Background gradient orbs */}
+      <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-[80px]" />
+      
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            From Vision to Production-Ready Systems
+            Product Management-Led <span className="text-gradient">Tech Services</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            7+ years of experience delivering complex digital platforms across transportation, government, logistics, e-commerce, and Web3.
+            7+ years of experience delivering complex digital platforms across transportation, government, logistics, e-commerce, and Web3—with product management at the core.
           </p>
         </div>
 
@@ -78,36 +82,36 @@ export function Services() {
           {services.map((service) => (
             <div
               key={service.title}
-              className={`group relative p-8 rounded-xl transition-all duration-300 hover:shadow-lg ${
+              className={`group relative p-8 rounded-2xl transition-all duration-500 hover:scale-[1.02] ${
                 service.featured 
-                  ? "bg-primary text-primary-foreground md:col-span-2 lg:col-span-1" 
-                  : "bg-card hover:bg-card/80"
+                  ? "glass-card glow md:col-span-2 lg:col-span-1 ring-2 ring-primary/20" 
+                  : "glass-card hover:shadow-xl"
               }`}
             >
               {service.featured && (
-                <div className="absolute top-4 right-4 text-xs font-medium px-2 py-1 rounded-full bg-primary-foreground/20 text-primary-foreground">
+                <div className="absolute -top-3 right-6 text-xs font-medium px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-lg">
                   Our Focus
                 </div>
               )}
               
-              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 ${
                 service.featured 
-                  ? "bg-primary-foreground/20" 
-                  : "bg-primary/10"
+                  ? "bg-primary/20 ring-2 ring-primary/30" 
+                  : "bg-primary/10 ring-2 ring-primary/20"
               }`}>
-                <service.icon className={`w-6 h-6 ${
-                  service.featured ? "text-primary-foreground" : "text-primary"
+                <service.icon className={`w-7 h-7 ${
+                  service.featured ? "text-primary" : "text-primary"
                 }`} />
               </div>
               
               <h3 className={`text-xl font-semibold mb-3 ${
-                service.featured ? "text-primary-foreground" : "text-foreground"
+                service.featured ? "text-foreground" : "text-foreground"
               }`}>
                 {service.title}
               </h3>
               
               <p className={`leading-relaxed ${
-                service.featured ? "text-primary-foreground/80" : "text-muted-foreground"
+                service.featured ? "text-muted-foreground" : "text-muted-foreground"
               }`}>
                 {service.description}
               </p>

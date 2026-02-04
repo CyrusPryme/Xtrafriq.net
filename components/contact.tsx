@@ -22,11 +22,15 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-secondary/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Background gradient orbs */}
+      <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[100px]" />
+      
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Let{"'"}s Build Something Great Together
+            Let{"'"}s Build Something <span className="text-gradient">Great Together</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Ready to transform your ideas into reality? Get in touch and let{"'"}s discuss your project.
@@ -39,8 +43,8 @@ export function Contact() {
             <h3 className="text-xl font-semibold text-foreground mb-8">Get in Touch</h3>
             
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 ring-2 ring-primary/20 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -51,8 +55,8 @@ export function Contact() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 ring-2 ring-primary/20 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -63,8 +67,8 @@ export function Contact() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 ring-2 ring-primary/20 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -76,8 +80,8 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Decorative element */}
-            <div className="mt-12 p-6 rounded-xl bg-card border border-border">
+            {/* Decorative glass quote card */}
+            <div className="mt-12 p-6 rounded-2xl glass-card">
               <p className="text-muted-foreground italic leading-relaxed">
                 {"\""}Great products are built through understanding, collaboration, and relentless 
                 attention to detail. We bring all three to every project.{"\""}
@@ -89,7 +93,7 @@ export function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card p-8 rounded-2xl border border-border">
+          <div className="glass-card rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -101,6 +105,7 @@ export function Contact() {
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20"
                   required
                 />
               </div>
@@ -115,6 +120,7 @@ export function Contact() {
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20"
                   required
                 />
               </div>
@@ -129,11 +135,12 @@ export function Contact() {
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 resize-none"
                   required
                 />
               </div>
               
-              <Button type="submit" size="lg" className="w-full gap-2">
+              <Button type="submit" size="lg" className="w-full gap-2 shadow-lg shadow-primary/25">
                 Send Message
                 <Send className="w-4 h-4" />
               </Button>
