@@ -1,12 +1,11 @@
 "use client"
 
-import React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { Mail, MapPin, Phone, Send, Loader2, CheckCircle2 } from "lucide-react"
+import { site } from "@/lib/site"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -14,11 +13,34 @@ export function Contact() {
     email: "",
     message: "",
   })
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setStatus('loading')
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+        setErrorMessage(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch {
+      setStatus('error')
+      setErrorMessage('Failed to send message. Please try again.')
+    }
   }
 
   return (
@@ -49,8 +71,8 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Email</div>
-                  <a href="mailto:hello@xtrafriq.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    hello@xtrafriq.com
+                  <a href={`mailto:${site.contactEmail}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    {site.contactEmail}
                   </a>
                 </div>
               </div>
@@ -61,8 +83,8 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Phone</div>
-                  <a href="tel:+233243879212" className="text-muted-foreground hover:text-primary transition-colors">
-                    +233 243 879 212
+                  <a href={`tel:${site.contactPhone.replace(/\s/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, '$1 $2 $3 $4')}
                   </a>
                 </div>
               </div>
@@ -104,7 +126,10 @@ export function Contact() {
                   type="text"
                   placeholder="John Doe"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value })
+                    if (status !== 'idle') setStatus('idle')
+                  }}
                   className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20"
                   required
                 />
@@ -119,7 +144,10 @@ export function Contact() {
                   type="email"
                   placeholder="john@example.com"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value })
+                    if (status !== 'idle') setStatus('idle')
+                  }}
                   className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20"
                   required
                 />
@@ -134,15 +162,43 @@ export function Contact() {
                   placeholder="Tell us about your project..."
                   rows={5}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, message: e.target.value })
+                    if (status !== 'idle') setStatus('idle')
+                  }}
                   className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 resize-none"
                   required
                 />
               </div>
               
-              <Button type="submit" size="lg" className="w-full gap-2 shadow-lg shadow-primary/25">
-                Send Message
-                <Send className="w-4 h-4" />
+              {status === 'error' && (
+                <p className="text-sm text-destructive" role="alert">
+                  {errorMessage}
+                </p>
+              )}
+              {status === 'success' && (
+                <p className="text-sm text-green-600 dark:text-green-400 flex items-center gap-2" role="status">
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  Thank you! We&apos;ll get back to you soon.
+                </p>
+              )}
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full gap-2 shadow-lg shadow-primary/25 disabled:opacity-70"
+                disabled={status === 'loading'}
+              >
+                {status === 'loading' ? (
+                  <>
+                    Sending...
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="w-4 h-4" />
+                  </>
+                )}
               </Button>
             </form>
           </div>

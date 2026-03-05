@@ -110,7 +110,7 @@ export default function ClientsPage() {
                   className="group relative bg-card border border-border rounded-xl p-6 lg:p-8 flex flex-col items-center justify-center hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
                   {/* Logo Display */}
-                  <div className="w-full aspect-[3/2] relative mb-4 flex items-center justify-center bg-muted/50 rounded-lg overflow-hidden">
+                  <div className="w-full aspect-[3/2] relative mb-4 flex items-center justify-center bg-muted/50 dark:bg-muted/30 dark:border dark:border-border rounded-lg overflow-hidden">
                     <Image
                       src={client.logo || "/placeholder.svg"}
                       alt={`${client.name} logo`}

@@ -8,13 +8,13 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
+            <Link href="/" className="flex items-center gap-3 mb-4" aria-label="Xtrafriq Tech Consult - Home">
               <Image
                 src="/logo.jpg"
                 alt="Xtrafriq Tech Consult Logo"
                 width={44}
                 height={44}
-                className="w-11 h-11 object-contain rounded-lg bg-background p-1"
+                className="w-11 h-11 object-contain rounded-lg bg-background p-1 dark:ring-1 dark:ring-background/50"
               />
               <span className="font-semibold text-lg">Xtrafriq Tech Consult</span>
             </Link>
@@ -27,12 +27,15 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
-            <nav className="flex flex-col gap-3">
+            <nav className="flex flex-col gap-3" aria-label="Footer navigation">
               <Link href="/#services" className="text-background/70 hover:text-background transition-colors text-sm">
                 Services
               </Link>
               <Link href="/about" className="text-background/70 hover:text-background transition-colors text-sm">
                 About Us
+              </Link>
+              <Link href="/blog" className="text-background/70 hover:text-background transition-colors text-sm">
+                Blog
               </Link>
               <Link href="/#contact" className="text-background/70 hover:text-background transition-colors text-sm">
                 Contact
@@ -57,10 +60,10 @@ export function Footer() {
             © {new Date().getFullYear()} Xtrafriq Tech Consult. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-background/50 hover:text-background transition-colors text-sm">
+            <Link href="/privacy" className="text-background/50 hover:text-background transition-colors text-sm">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-background/50 hover:text-background transition-colors text-sm">
+            <Link href="/terms" className="text-background/50 hover:text-background transition-colors text-sm">
               Terms of Service
             </Link>
           </div>

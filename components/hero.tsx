@@ -12,7 +12,7 @@ export function Hero() {
           alt="Decorative background"
           priority={false}
           fill
-          className="object-cover opacity-20 mix-blend-overlay"
+          className="object-cover opacity-10 dark:opacity-[0.15] mix-blend-overlay"
         />
       </div>
       {/* Animated gradient orbs */}
@@ -20,7 +20,7 @@ export function Hero() {
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-[128px] animate-pulse" style={{ animationDelay: '1s' }} />
       
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.06]">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <pattern id="grid" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
@@ -56,7 +56,7 @@ export function Hero() {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="px-8 glass-button hover:bg-white/20">
+            <Button asChild variant="outline" size="lg" className="px-8 glass-button hover:bg-muted/50">
               <a href="/#work">View Our Work</a>
             </Button>
           </div>
