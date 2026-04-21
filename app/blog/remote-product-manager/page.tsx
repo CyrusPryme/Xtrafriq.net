@@ -2,13 +2,68 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
+import Script from "next/script"
 import { ArrowLeft, Calendar, Clock, User, Share2, Bookmark } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import type { Metadata } from "next"
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
+const canonicalUrl = `${siteUrl}/blog/remote-product-manager`
+const ogImage = `${siteUrl}/remote-pm-success-tips.png`
+
+export const metadata: Metadata = {
+  title: "Thriving as a Remote Product Manager",
+  description:
+    "Master the art of product management from anywhere. Discover strategies, tools, and mindsets that separate good remote PMs from great ones.",
+  alternates: { canonical: canonicalUrl },
+  openGraph: {
+    title: "Thriving as a Remote Product Manager: Strategies for Success in a Distributed World",
+    description:
+      "Master the art of product management from anywhere. Discover strategies, tools, and mindsets that separate good remote PMs from great ones.",
+    type: "article",
+    url: canonicalUrl,
+    publishedTime: new Date("Feb 16, 2026").toISOString(),
+    authors: ["Xtrafriq Team"],
+    tags: ["Product Management", "Remote Work"],
+    section: "Product Management",
+    images: [{ url: ogImage }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thriving as a Remote Product Manager",
+    description:
+      "Master the art of product management from anywhere. Discover strategies, tools, and mindsets that separate good remote PMs from great ones.",
+    images: [ogImage],
+  },
+}
 
 export default function RemoteProductManagerPost() {
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: "Thriving as a Remote Product Manager: Strategies for Success in a Distributed World",
+    description:
+      "Master the art of product management from anywhere. Discover strategies, tools, and mindsets that separate good remote PMs from great ones.",
+    image: [ogImage],
+    author: [{ "@type": "Organization", name: "Xtrafriq Team" }],
+    publisher: {
+      "@type": "Organization",
+      name: "Xtrafriq Tech Consult",
+      logo: { "@type": "ImageObject", url: `${siteUrl}/logo.jpg` },
+    },
+    mainEntityOfPage: canonicalUrl,
+    url: canonicalUrl,
+    datePublished: new Date("Feb 16, 2026").toISOString(),
+  }
+
   return (
     <>
+      <Script
+        id="ld-blog-remote-product-manager"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <Header />
       <main className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-6 lg:px-8">

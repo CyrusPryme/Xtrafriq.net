@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import Script from "next/script"
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
 import { allPosts, getPostBySlug } from "@/lib/blog-posts"
 
@@ -18,9 +19,31 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return { title: "Post Not Found" }
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
+  const url = `${siteUrl}/blog/${post.slug}`
+  const image = `${siteUrl}${post.image}`
+  const publishedTime = new Date(post.date).toISOString()
   return {
-    title: `${post.title} | Xtrafriq Tech Consult Blog`,
+    title: post.title,
     description: post.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url,
+      publishedTime,
+      authors: [post.author],
+      tags: [post.category],
+      section: post.category,
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [image],
+    },
   }
 }
 
@@ -34,8 +57,28 @@ export default async function BlogPostPage({
 
   if (!post) notFound()
 
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
+  const postUrl = `${siteUrl}/blog/${post.slug}`
+
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: [`${siteUrl}${post.image}`],
+    author: [{ "@type": "Organization", name: post.author }],
+    publisher: { "@type": "Organization", name: "Xtrafriq Tech Consult", logo: { "@type": "ImageObject", url: `${siteUrl}/logo.jpg` } },
+    mainEntityOfPage: postUrl,
+    url: postUrl,
+  }
+
   return (
     <>
+      <Script
+        id={`ld-blog-${post.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <Header />
       <main className="pt-24 pb-16">
         <article className="max-w-3xl mx-auto px-6 lg:px-8">

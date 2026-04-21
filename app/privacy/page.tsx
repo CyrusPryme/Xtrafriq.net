@@ -3,9 +3,25 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { site } from '@/lib/site'
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://xtrafriq.com').replace(/\/$/, '')
+
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Xtrafriq Tech Consult',
+  title: 'Privacy Policy',
   description: 'Privacy policy for Xtrafriq Tech Consult - how we collect, use, and protect your information.',
+  alternates: { canonical: `${siteUrl}/privacy` },
+  openGraph: {
+    title: 'Privacy Policy | Xtrafriq Tech Consult',
+    description: 'Privacy policy for Xtrafriq Tech Consult - how we collect, use, and protect your information.',
+    url: `${siteUrl}/privacy`,
+    type: 'website',
+    images: [{ url: `${siteUrl}/logo.jpg` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | Xtrafriq Tech Consult',
+    description: 'Privacy policy for Xtrafriq Tech Consult - how we collect, use, and protect your information.',
+    images: [`${siteUrl}/logo.jpg`],
+  },
 }
 
 export default function PrivacyPolicy() {

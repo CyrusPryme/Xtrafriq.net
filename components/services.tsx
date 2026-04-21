@@ -9,6 +9,7 @@ import {
   Target,
   Rocket
 } from "lucide-react"
+import Link from "next/link"
 
 const services = [
   {
@@ -16,48 +17,56 @@ const services = [
     title: "Product Strategy & Leadership",
     description: "End-to-end product lifecycle management from discovery to launch. We define roadmaps, OKRs, and execute with precision to deliver production-ready systems.",
     featured: false,
+    href: "/services/product-strategy",
   },
   {
     icon: Building2,
     title: "Enterprise & Government Platforms",
     description: "Complex digital systems for transportation, logistics, and public sector operations. Proven delivery of national-scale platforms in regulated environments.",
     featured: false,
+    href: "/services/enterprise-platforms",
   },
   {
     icon: Users,
     title: "Cross-Functional Team Building",
     description: "We recruit, form, and lead high-performing engineering teams. From frontend to QA, we build the talent infrastructure your project needs.",
     featured: false,
+    href: "/services/agile-delivery",
   },
   {
     icon: Smartphone,
     title: "Mobile & Web App Development",
     description: "Native and cross-platform mobile apps plus responsive web applications. We deliver performant, maintainable code and production-ready deployments.",
     featured: false,
+    href: "/services/mobile-web-development",
   },
   {
     icon: Target,
     title: "Product Management & Strategy",
     description: "End-to-end product strategy, roadmap development, OKR planning, and market fit validation. We help you define the right product and execute with precision.",
     featured: true,
+    href: "/services/product-strategy",
   },
   {
     icon: Shield,
     title: "Cybersecurity & Risk Management",
     description: "Security assessments, threat modeling, secure SDLC practices, and incident readiness to protect systems and user data.",
     featured: false,
+    href: "/services/cybersecurity",
   },
   {
     icon: LineChart,
     title: "Digital Marketing & Growth",
     description: "Data-driven marketing strategies, ASO, SEO, and analytics implementation. We help startups and SMEs achieve 40%+ growth in organic traffic and user acquisition.",
     featured: false,
+    href: "/services/product-strategy",
   },
   {
     icon: Rocket,
     title: "Agile & Scrum Implementation",
     description: "Structured sprint planning, GitHub workflows, and QA gates that improve delivery predictability. We bring execution discipline to your development process.",
     featured: false,
+    href: "/services/agile-delivery",
   },
 ]
 
@@ -80,8 +89,9 @@ export function Services() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div
+            <Link
               key={service.title}
+              href={service.href}
               className={`group relative p-8 rounded-2xl transition-all duration-500 hover:scale-[1.02] ${
                 service.featured 
                   ? "glass-card glow md:col-span-2 lg:col-span-1 ring-2 ring-primary/20" 
@@ -115,7 +125,10 @@ export function Services() {
               }`}>
                 {service.description}
               </p>
-            </div>
+              <span className="mt-6 inline-flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                Learn more
+              </span>
+            </Link>
           ))}
         </div>
       </div>

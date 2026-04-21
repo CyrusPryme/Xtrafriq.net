@@ -2,10 +2,29 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import { Building2, Handshake, Globe } from "lucide-react"
+import type { Metadata } from "next"
 
-export const metadata = {
-  title: "Our Clients & Partners | Xtrafriq Tech Consult",
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
+
+export const metadata: Metadata = {
+  title: "Clients",
   description: "Trusted by leading companies across Africa and beyond. See the organizations we've partnered with to deliver exceptional tech solutions.",
+  alternates: { canonical: `${siteUrl}/clients` },
+  openGraph: {
+    title: "Clients & Partners | Xtrafriq Tech Consult",
+    description:
+      "Trusted by leading companies across Africa and beyond. See the organizations we've partnered with to deliver exceptional tech solutions.",
+    url: `${siteUrl}/clients`,
+    type: "website",
+    images: [{ url: `${siteUrl}/logo.jpg` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Clients & Partners | Xtrafriq Tech Consult",
+    description:
+      "Trusted by leading companies across Africa and beyond. See the organizations we've partnered with to deliver exceptional tech solutions.",
+    images: [`${siteUrl}/logo.jpg`],
+  },
 }
 
 // Client logos (using kebab-case filenames)

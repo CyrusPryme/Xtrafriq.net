@@ -3,9 +3,25 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { site } from '@/lib/site'
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://xtrafriq.com').replace(/\/$/, '')
+
 export const metadata: Metadata = {
-  title: 'Terms of Service | Xtrafriq Tech Consult',
+  title: 'Terms of Service',
   description: 'Terms of service for Xtrafriq Tech Consult - our terms and conditions for using our services.',
+  alternates: { canonical: `${siteUrl}/terms` },
+  openGraph: {
+    title: 'Terms of Service | Xtrafriq Tech Consult',
+    description: 'Terms of service for Xtrafriq Tech Consult - our terms and conditions for using our services.',
+    url: `${siteUrl}/terms`,
+    type: 'website',
+    images: [{ url: `${siteUrl}/logo.jpg` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | Xtrafriq Tech Consult',
+    description: 'Terms of service for Xtrafriq Tech Consult - our terms and conditions for using our services.',
+    images: [`${siteUrl}/logo.jpg`],
+  },
 }
 
 export default function TermsOfService() {

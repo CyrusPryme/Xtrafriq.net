@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import { AuthProvider } from "@/components/auth-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
@@ -54,9 +55,45 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://xtrafriq.com').replace(/\/$/, '')
+
+  const sameAs = [
+    process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN,
+    process.env.NEXT_PUBLIC_SOCIAL_TWITTER,
+    process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK,
+    process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM,
+    process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE,
+  ].filter((v): v is string => Boolean(v))
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Xtrafriq Tech Consult',
+    url: siteUrl,
+    logo: `${siteUrl}/logo.jpg`,
+    sameAs,
+  }
+
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Xtrafriq Tech Consult',
+    url: siteUrl,
+  }
+
   return (
     <html lang="en" className={geist.className} suppressHydrationWarning>
       <body className="antialiased">
+        <Script
+          id="ld-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <Script
+          id="ld-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <AuthProvider>
             <div id="content">{children}</div>
