@@ -5,6 +5,7 @@ import {
   Building2, 
   LineChart, 
   Shield,
+  ClipboardList,
   Users,
   Target,
   Rocket
@@ -18,6 +19,14 @@ const services = [
     description: "End-to-end product lifecycle management from discovery to launch. We define roadmaps, OKRs, and execute with precision to deliver production-ready systems.",
     featured: false,
     href: "/services/product-strategy",
+  },
+  {
+    icon: ClipboardList,
+    title: "Project Management (Technology + AI)",
+    description:
+      "Project leadership for any domain—optimized with technology and AI to improve speed, cost, and predictability.",
+    featured: false,
+    href: "/services/project-management",
   },
   {
     icon: Building2,
@@ -83,7 +92,7 @@ export function Services() {
             Product Management-Led <span className="text-gradient">Tech Services</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            7+ years of experience delivering complex digital platforms across transportation, government, logistics, e-commerce, and Web3—with product management at the core.
+            7+ years of experience delivering complex digital platforms across transportation, government, logistics, e-commerce, and Web3—with product management at the core. We apply the same rigor across product and project management, AI-optimized where it accelerates clarity and delivery, so engagements meet a world-class bar.
           </p>
         </div>
 

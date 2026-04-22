@@ -1,7 +1,8 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
-import { Building2, Handshake, Globe } from "lucide-react"
+import { Building2, Globe, Layers, Users } from "lucide-react"
+import { SITE_METRICS } from "@/lib/site-metrics"
 import type { Metadata } from "next"
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
@@ -32,7 +33,12 @@ const clients = [
   {
     name: "Absolute Surge Group Ghana",
     logo: "/clients/absolute-surge-group-ghana.jpg",
-    category: "Technology",
+    category: "Training & Development",
+  },
+  {
+    name: "BFNG",
+    logo: "/clients/BFNG.jpeg",
+    category: "Agri-commerce",
   },
   {
     name: "Farmer Torks",
@@ -62,15 +68,11 @@ const clients = [
   {
     name: "Scorpio Mystique",
     logo: "/clients/scorpio-mystique.jpeg",
-    category: "Retail",
+    category: "Astrology & Wellness",
   },
 ]
 
-const stats = [
-  { icon: Building2, value: "50+", label: "Clients Served" },
-  { icon: Handshake, value: "100+", label: "Projects Delivered" },
-  { icon: Globe, value: "15+", label: "Countries Reached" },
-]
+const statIcons = [Layers, Building2, Globe, Users] as const
 
 export default function ClientsPage() {
   return (
@@ -98,14 +100,17 @@ export default function ClientsPage() {
         {/* Stats Section */}
         <section className="py-12 border-b border-border">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-3 gap-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {SITE_METRICS.map((stat, i) => {
+                const Icon = statIcons[i]
+                return (
+                  <div key={stat.label} className="text-center">
+                    <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                    <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>

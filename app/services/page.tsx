@@ -9,12 +9,12 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").rep
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Product management-led tech services: product strategy, enterprise platforms, mobile & web development, cybersecurity, cloud, and agile delivery.",
+    "Product and project management-led services: delivery leadership, enterprise platforms, mobile & web development, cybersecurity, cloud, agile enablement, and project optimization with technology and AI.",
   alternates: { canonical: `${siteUrl}/services` },
   openGraph: {
     title: "Services | Xtrafriq Tech Consult",
     description:
-      "Product management-led tech services: product strategy, enterprise platforms, mobile & web development, cybersecurity, cloud, and agile delivery.",
+      "Product and project management-led services: delivery leadership, enterprise platforms, mobile & web development, cybersecurity, cloud, agile enablement, and project optimization with technology and AI.",
     url: `${siteUrl}/services`,
     type: "website",
     images: [{ url: `${siteUrl}/logo.jpg` }],
@@ -33,6 +33,12 @@ const services = [
     title: "Product Strategy & Leadership",
     description: "Discovery, roadmaps, OKRs, and execution leadership that turns ideas into scalable products.",
     href: "/services/product-strategy",
+  },
+  {
+    title: "Project Management (Technology + AI)",
+    description:
+      "End-to-end project leadership for any domain—optimized with modern tooling, automation, and AI to improve speed, cost, and predictability.",
+    href: "/services/project-management",
   },
   {
     title: "Enterprise & Government Platforms",

@@ -53,7 +53,7 @@ export function About() {
 
           <p className="text-muted-foreground mb-6 leading-relaxed">
             Our track record includes building and leading cross-functional teams, implementing 
-            Agile frameworks that improve delivery predictability, and training 100+ African 
+            Agile frameworks that improve delivery predictability, and training 200+ African 
             entrepreneurs in digital growth strategies.
           </p>
 

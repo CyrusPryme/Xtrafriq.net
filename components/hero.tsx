@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { SITE_METRICS } from "@/lib/site-metrics"
 
 export function Hero() {
   return (
@@ -43,7 +44,7 @@ export function Hero() {
           
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 text-pretty">
               From national transport systems to mobile apps with 30K+ users. We lead product strategy,
-              build high-performing teams, and deliver production-ready platforms.
+              build high-performing teams, and deliver production-ready platforms—grounded in leading product and project management practice, enhanced with AI, so outcomes stay world-class.
             </p>
           
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -107,19 +108,13 @@ export function Hero() {
 
           {/* Glass stats card */}
         <div className="glass-card rounded-2xl p-8 mt-20 max-w-5xl mx-auto">
-            <div className="grid grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">7+</div>
-                <div className="text-sm text-muted-foreground mt-1">Years Experience</div>
-              </div>
-              <div className="text-center border-x border-border/30">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">95%</div>
-                <div className="text-sm text-muted-foreground mt-1">Client Satisfaction</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">100+</div>
-                <div className="text-sm text-muted-foreground mt-1">Entrepreneurs Trained</div>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {SITE_METRICS.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
       </div>

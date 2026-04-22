@@ -82,7 +82,7 @@ export function Header() {
                   <Link href="/auth">Sign In</Link>
                 </Button>
                 <Button size="sm" asChild className="shadow-lg shadow-primary/25">
-                  <Link href="/auth">Get Started</Link>
+                  <Link href="/#contact">Get Started</Link>
                 </Button>
               </>
             )}
@@ -147,7 +147,7 @@ export function Header() {
                         <Link href="/auth">Sign In</Link>
                       </Button>
                       <Button size="sm" asChild className="shadow-lg shadow-primary/25">
-                        <Link href="/auth">Get Started</Link>
+                        <Link href="/#contact">Get Started</Link>
                       </Button>
                     </>
                   )}

@@ -50,7 +50,7 @@ export function Footer() {
               <span className="text-background/70 text-sm">Product Management</span>
               <span className="text-background/70 text-sm">Software Development</span>
               <span className="text-background/70 text-sm">Mobile Solutions</span>
-              <span className="text-background/70 text-sm">Cloud Services</span>
+              <span className="text-background/70 text-sm">Project Management</span>
             </nav>
           </div>
         </div>
