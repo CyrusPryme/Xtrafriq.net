@@ -7,8 +7,9 @@ import { ArrowLeft, Calendar, Clock, User, Share2, Bookmark } from "lucide-react
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import type { Metadata } from "next"
+import { siteUrl } from "@/lib/site"
+import { featuredPost } from "@/lib/blog-posts"
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
 const canonicalUrl = `${siteUrl}/blog/remote-product-manager`
 const ogImage = `${siteUrl}/remote-pm-success-tips.png`
 
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
       "Master the art of product management from anywhere. Discover strategies, tools, and mindsets that separate good remote PMs from great ones.",
     type: "article",
     url: canonicalUrl,
-    publishedTime: new Date("Feb 16, 2026").toISOString(),
+    publishedTime: new Date(featuredPost.publishedAt).toISOString(),
     authors: ["Xtrafriq Team"],
     tags: ["Product Management", "Remote Work"],
     section: "Product Management",

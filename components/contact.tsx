@@ -44,22 +44,25 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
+    <section id="contact" className="py-12 lg:py-20 relative overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[100px]" />
       
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-sm font-medium mb-4">
+            Get in touch
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
             Let{"'"}s Build Something <span className="text-gradient">Great Together</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg">
             Ready to transform your ideas into reality? Get in touch and let{"'"}s discuss your project.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-8">Get in Touch</h3>
@@ -115,7 +118,7 @@ export function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="glass-card rounded-2xl p-8">
+          <div className="glass-card rounded-2xl p-5 sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">

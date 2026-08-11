@@ -6,6 +6,7 @@ import { notFound } from "next/navigation"
 import Script from "next/script"
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
 import { allPosts, getPostBySlug } from "@/lib/blog-posts"
+import { siteUrl } from "@/lib/site"
 
 export function generateStaticParams() {
   return allPosts.map((post) => ({ slug: post.slug }))
@@ -19,10 +20,9 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return { title: "Post Not Found" }
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
   const url = `${siteUrl}/blog/${post.slug}`
   const image = `${siteUrl}${post.image}`
-  const publishedTime = new Date(post.date).toISOString()
+  const publishedTime = new Date(post.publishedAt).toISOString()
   return {
     title: post.title,
     description: post.excerpt,

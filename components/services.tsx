@@ -1,144 +1,98 @@
-import { 
-  LayoutDashboard, 
-  Code2, 
-  Smartphone, 
-  Building2, 
-  LineChart, 
+import {
+  LayoutDashboard,
+  Smartphone,
+  Building2,
   Shield,
   ClipboardList,
-  Users,
-  Target,
-  Rocket
+  Cloud,
+  Rocket,
+  type LucideIcon,
 } from "lucide-react"
 import Link from "next/link"
+import { SERVICES } from "@/lib/services"
 
-const services = [
-  {
-    icon: LayoutDashboard,
-    title: "Product Strategy & Leadership",
-    description: "End-to-end product lifecycle management from discovery to launch. We define roadmaps, OKRs, and execute with precision to deliver production-ready systems.",
-    featured: false,
-    href: "/services/product-strategy",
-  },
-  {
-    icon: ClipboardList,
-    title: "Project Management (Technology + AI)",
-    description:
-      "Project leadership for any domain—optimized with technology and AI to improve speed, cost, and predictability.",
-    featured: false,
-    href: "/services/project-management",
-  },
-  {
-    icon: Building2,
-    title: "Enterprise & Government Platforms",
-    description: "Complex digital systems for transportation, logistics, and public sector operations. Proven delivery of national-scale platforms in regulated environments.",
-    featured: false,
-    href: "/services/enterprise-platforms",
-  },
-  {
-    icon: Users,
-    title: "Cross-Functional Team Building",
-    description: "We recruit, form, and lead high-performing engineering teams. From frontend to QA, we build the talent infrastructure your project needs.",
-    featured: false,
-    href: "/services/agile-delivery",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile & Web App Development",
-    description: "Native and cross-platform mobile apps plus responsive web applications. We deliver performant, maintainable code and production-ready deployments.",
-    featured: false,
-    href: "/services/mobile-web-development",
-  },
-  {
-    icon: Target,
-    title: "Product Management & Strategy",
-    description: "End-to-end product strategy, roadmap development, OKR planning, and market fit validation. We help you define the right product and execute with precision.",
-    featured: true,
-    href: "/services/product-strategy",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity & Risk Management",
-    description: "Security assessments, threat modeling, secure SDLC practices, and incident readiness to protect systems and user data.",
-    featured: false,
-    href: "/services/cybersecurity",
-  },
-  {
-    icon: LineChart,
-    title: "Digital Marketing & Growth",
-    description: "Data-driven marketing strategies, ASO, SEO, and analytics implementation. We help startups and SMEs achieve 40%+ growth in organic traffic and user acquisition.",
-    featured: false,
-    href: "/services/product-strategy",
-  },
-  {
-    icon: Rocket,
-    title: "Agile & Scrum Implementation",
-    description: "Structured sprint planning, GitHub workflows, and QA gates that improve delivery predictability. We bring execution discipline to your development process.",
-    featured: false,
-    href: "/services/agile-delivery",
-  },
-]
+const iconBySlug: Record<string, LucideIcon> = {
+  "product-strategy": LayoutDashboard,
+  "project-management": ClipboardList,
+  "enterprise-platforms": Building2,
+  "mobile-web-development": Smartphone,
+  cybersecurity: Shield,
+  "cloud-architecture": Cloud,
+  "agile-delivery": Rocket,
+}
+
+/* Gradient pairs per service — gives each card a distinct tinted bg */
+const gradientBySlug: Record<string, string> = {
+  "product-strategy": "from-primary/10 to-primary/5",
+  "project-management": "from-accent/10 to-accent/5",
+  "enterprise-platforms": "from-chart-3/10 to-chart-3/5",
+  "mobile-web-development": "from-chart-4/10 to-chart-4/5",
+  cybersecurity: "from-destructive/8 to-destructive/3",
+  "cloud-architecture": "from-chart-5/10 to-chart-5/5",
+  "agile-delivery": "from-accent/10 to-primary/5",
+}
 
 export function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 relative overflow-hidden">
-      {/* Background gradient orbs */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-[80px]" />
-      
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Product Management-Led <span className="text-gradient">Tech Services</span>
+    <section id="services" className="py-12 lg:py-20 relative overflow-hidden">
+      <div
+        className="absolute top-1/2 left-0 w-72 h-72 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 motion-safe:animate-pulse"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-[80px]"
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-sm font-medium mb-4">
+            What we do
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
+            Product Management-Led{" "}
+            <span className="text-gradient">Tech Services</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            7+ years of experience delivering complex digital platforms across transportation, government, logistics, e-commerce, and Web3—with product management at the core. We apply the same rigor across product and project management, AI-optimized where it accelerates clarity and delivery, so engagements meet a world-class bar.
+          <p className="text-muted-foreground text-base sm:text-lg">
+            7+ years delivering complex digital platforms—with product and project management at the core,
+            AI-optimized where it accelerates clarity and delivery.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className={`group relative p-8 rounded-2xl transition-all duration-500 hover:scale-[1.02] ${
-                service.featured 
-                  ? "glass-card glow md:col-span-2 lg:col-span-1 ring-2 ring-primary/20" 
-                  : "glass-card hover:shadow-xl"
-              }`}
-            >
-              {service.featured && (
-                <div className="absolute -top-3 right-6 text-xs font-medium px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-lg">
-                  Our Focus
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {SERVICES.map((service) => {
+            const Icon = iconBySlug[service.slug] ?? LayoutDashboard
+            const grad = gradientBySlug[service.slug] ?? "from-primary/10 to-primary/5"
+            return (
+              <Link
+                key={service.slug}
+                href={service.href}
+                className={`group relative p-5 sm:p-7 rounded-2xl border border-border bg-gradient-to-br ${grad} transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-0.5 overflow-hidden`}
+              >
+                {/* Subtle top-right corner accent */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-2xl pointer-events-none" />
+
+                {service.featured && (
+                  <div className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-primary text-primary-foreground shadow">
+                    Our Focus
+                  </div>
+                )}
+
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-background/60 border border-border/60 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:shadow-md">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
-              )}
-              
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 ${
-                service.featured 
-                  ? "bg-primary/20 ring-2 ring-primary/30" 
-                  : "bg-primary/10 ring-2 ring-primary/20"
-              }`}>
-                <service.icon className={`w-7 h-7 ${
-                  service.featured ? "text-primary" : "text-primary"
-                }`} />
-              </div>
-              
-              <h3 className={`text-xl font-semibold mb-3 ${
-                service.featured ? "text-foreground" : "text-foreground"
-              }`}>
-                {service.title}
-              </h3>
-              
-              <p className={`leading-relaxed ${
-                service.featured ? "text-muted-foreground" : "text-muted-foreground"
-              }`}>
-                {service.description}
-              </p>
-              <span className="mt-6 inline-flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                Learn more
-              </span>
-            </Link>
-          ))}
+
+                <h3 className="text-base sm:text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary translate-x-0 group-hover:translate-x-1 transition-transform">
+                  Learn more →
+                </span>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </section>

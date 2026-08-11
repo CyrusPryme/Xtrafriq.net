@@ -4,6 +4,8 @@ export type BlogPost = {
   image: string
   author: string
   date: string
+  /** ISO date for metadata / sitemap */
+  publishedAt: string
   readTime: string
   category: string
   slug: string
@@ -11,10 +13,12 @@ export type BlogPost = {
 
 export const featuredPost: BlogPost = {
   title: "Thriving as a Remote Product Manager: Strategies for Success in a Distributed World",
-  excerpt: "Master the art of product management from anywhere. Discover proven strategies, tools, and mindsets that separate good remote PMs from great ones.",
+  excerpt:
+    "Master the art of product management from anywhere. Discover proven strategies, tools, and mindsets that separate good remote PMs from great ones.",
   image: "/remote-pm-success-tips.png",
   author: "Xtrafriq Team",
   date: "Feb 16, 2026",
+  publishedAt: "2026-02-16",
   readTime: "12 min read",
   category: "Product Management",
   slug: "remote-product-manager",
@@ -23,10 +27,12 @@ export const featuredPost: BlogPost = {
 export const blogPosts: BlogPost[] = [
   {
     title: "The Ultimate Guide to Product Management in 2025",
-    excerpt: "Discover essential strategies and frameworks that successful product managers use to build products that users love and businesses thrive on.",
+    excerpt:
+      "Discover essential strategies and frameworks that successful product managers use to build products that users love and businesses thrive on.",
     image: "/blog-product-management-2025.png",
     author: "Xtrafriq Team",
     date: "Jan 20, 2026",
+    publishedAt: "2026-01-20",
     readTime: "8 min read",
     category: "Product Management",
     slug: "product-management-guide-2025",
@@ -37,6 +43,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog-digital-transformation-africa.png",
     author: "Xtrafriq Team",
     date: "Jan 15, 2026",
+    publishedAt: "2026-01-15",
     readTime: "6 min read",
     category: "Digital Strategy",
     slug: "digital-transformation-africa",
@@ -47,6 +54,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog-agile-beyond-basics.png",
     author: "Xtrafriq Team",
     date: "Jan 10, 2026",
+    publishedAt: "2026-01-10",
     readTime: "5 min read",
     category: "Methodology",
     slug: "agile-beyond-basics",
@@ -57,6 +65,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog-african-tech-ecosystem.png",
     author: "Xtrafriq Team",
     date: "Jan 5, 2026",
+    publishedAt: "2026-01-05",
     readTime: "7 min read",
     category: "Industry Insights",
     slug: "african-tech-ecosystem",
@@ -67,6 +76,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog-scaling-startup-mvp.png",
     author: "Xtrafriq Team",
     date: "Dec 28, 2025",
+    publishedAt: "2025-12-28",
     readTime: "9 min read",
     category: "Startups",
     slug: "scaling-startup-mvp-market-leader",
@@ -77,6 +87,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog-cloud-architecture.png",
     author: "Xtrafriq Team",
     date: "Dec 20, 2025",
+    publishedAt: "2025-12-20",
     readTime: "6 min read",
     category: "Technology",
     slug: "cloud-architecture-best-practices",

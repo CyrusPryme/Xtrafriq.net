@@ -1,16 +1,15 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next"
+import { siteUrl } from "@/lib/site"
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://xtrafriq.com').replace(/\/$/, '')
-
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/auth", "/dashboard", "/admin", "/api/"],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
   }
 }
-

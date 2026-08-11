@@ -70,21 +70,28 @@ export function About() {
 
           {/* Images placed under the text */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            {['about-1.jpeg','about-2.jpeg','about-3.jpeg'].map((file, idx) => (
-              <div key={file} className={`relative aspect-[4/3] rounded-2xl overflow-hidden border border-border ${idx === 1 ? 'bg-muted/10 p-4' : ''} shadow-sm hover:shadow-lg transition-shadow transform-gpu hover:-translate-y-1`}>
+            {[
+              { file: "about-1.jpeg", alt: "Xtrafriq team collaborating on product delivery" },
+              { file: "about-2.jpeg", alt: "Xtrafriq Tech Consult brand mark" },
+              { file: "about-3.jpeg", alt: "Product workshop and stakeholder session" },
+            ].map((img, idx) => (
+              <div
+                key={img.file}
+                className={`relative aspect-[4/3] rounded-2xl overflow-hidden border border-border ${idx === 1 ? "bg-muted/10 p-4" : ""} shadow-sm hover:shadow-lg transition-shadow transform-gpu hover:-translate-y-1`}
+              >
                 <Image
-                  src={`/about/${file}`}
-                  alt={`About image ${file}`}
+                  src={`/about/${img.file}`}
+                  alt={img.alt}
                   fill
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-                  className={idx === 1 ? 'object-contain object-center' : 'object-cover object-center'}
+                  className={idx === 1 ? "object-contain object-center" : "object-cover object-center"}
                 />
               </div>
             ))}
           </div>
 
           {/* Charity Giving */}
-          <div className="mb-10 p-6 rounded-2xl bg-primary/5/80 border border-primary/10 shadow-sm">
+          <div className="mb-10 p-6 rounded-2xl bg-primary/5 border border-primary/10 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <Heart className="w-6 h-6 text-primary" />
               <h4 className="text-lg font-semibold text-foreground">Giving Back</h4>
