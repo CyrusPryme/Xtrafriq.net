@@ -64,7 +64,7 @@ npm start
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Yes | Email displayed on contact section |
 | `RESEND_API_KEY` | Yes | Resend API key for contact form emails |
 | `RESEND_FROM_EMAIL` | No | Custom "from" address (verify domain first) |
-| `NEXT_PUBLIC_SITE_URL` | No | Site URL for metadata |
+| `NEXT_PUBLIC_SITE_URL` | No | Canonical site URL for metadata, sitemap, and OG tags. Defaults to the current Vercel host. Set to `https://xtrafriq.com` only after that domain resolves. |
 | `NEXT_PUBLIC_CONTACT_PHONE` | No | Contact phone number |
 
 ## Project Structure

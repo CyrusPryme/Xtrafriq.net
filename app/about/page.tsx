@@ -2,8 +2,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { About } from "@/components/about"
 import type { Metadata } from "next"
-
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
+import { siteUrl } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "About",

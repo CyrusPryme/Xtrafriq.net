@@ -57,7 +57,6 @@ export default async function BlogPostPage({
 
   if (!post) notFound()
 
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://xtrafriq.com").replace(/\/$/, "")
   const postUrl = `${siteUrl}/blog/${post.slug}`
 
   const blogPostingJsonLd = {

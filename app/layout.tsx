@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { AuthProvider } from "@/components/auth-provider"
 import { ThemeProvider } from "@/components/theme-provider"
-import { siteUrl } from "@/lib/site"
+import { defaultTitle, siteUrl } from "@/lib/site"
 import "./globals.css"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" })
@@ -15,7 +15,7 @@ const syne = Syne({ subsets: ["latin"], variable: "--font-syne", weight: ["500",
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Xtrafriq Tech Consult | Product Management & Tech Services",
+    default: defaultTitle,
     template: "%s | Xtrafriq Tech Consult",
   },
   description:
@@ -40,11 +40,15 @@ export const metadata: Metadata = {
   authors: [{ name: "Xtrafriq Tech Consult", url: siteUrl }],
   creator: "Xtrafriq Tech Consult",
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png", media: "(prefers-color-scheme: light)" },
+      { url: "/icon-dark-32x32.png", sizes: "32x32", type: "image/png", media: "(prefers-color-scheme: dark)" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "Xtrafriq Tech Consult | Product Management & Tech Services",
+    title: defaultTitle,
     description:
       "Expert product management and comprehensive tech services from Africa to the world. We build, scale, and optimize digital products with innovation and trust.",
     url: siteUrl,
@@ -62,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Xtrafriq Tech Consult | Product Management & Tech Services",
+    title: defaultTitle,
     description: "Expert product management and comprehensive tech services from Africa to the world.",
   },
   robots: {
