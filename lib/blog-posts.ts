@@ -2,6 +2,8 @@ export type BlogPost = {
   title: string
   excerpt: string
   image: string
+  /** Plain-language image description; falls back to title when omitted */
+  imageAlt?: string
   author: string
   date: string
   /** ISO date for metadata / sitemap */
@@ -12,19 +14,33 @@ export type BlogPost = {
 }
 
 export const featuredPost: BlogPost = {
-  title: "Thriving as a Remote Product Manager: Strategies for Success in a Distributed World",
+  title: "AI Is Moving Faster Than Your Process: What Product and Project Teams Should Change Now",
   excerpt:
-    "Master the art of product management from anywhere. Discover proven strategies, tools, and mindsets that separate good remote PMs from great ones.",
-  image: "/remote-pm-success-tips.png",
+    "AI is compressing some work and inflating stakeholder expectations at the same time. Here is how product managers, project managers, and delivery leads keep scope, quality, and trust intact.",
+  image: "/blog-ai-advancing-product-teams.png",
+  imageAlt:
+    "Silhouettes of a product team around a conference table, with product boards and a teal neural-network wave connecting into a digital grid",
   author: "Xtrafriq Team",
-  date: "Feb 16, 2026",
-  publishedAt: "2026-02-16",
-  readTime: "12 min read",
+  date: "Sep 12, 2026",
+  publishedAt: "2026-09-12",
+  readTime: "10 min read",
   category: "Product Management",
-  slug: "remote-product-manager",
+  slug: "ai-advancing-product-project-teams",
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Thriving as a Remote Product Manager: Strategies for Success in a Distributed World",
+    excerpt:
+      "Master the art of product management from anywhere. Discover proven strategies, tools, and mindsets that separate good remote PMs from great ones.",
+    image: "/remote-pm-success-tips.png",
+    author: "Xtrafriq Team",
+    date: "Feb 16, 2026",
+    publishedAt: "2026-02-16",
+    readTime: "12 min read",
+    category: "Product Management",
+    slug: "remote-product-manager",
+  },
   {
     title: "The Ultimate Guide to Product Management in 2025",
     excerpt:

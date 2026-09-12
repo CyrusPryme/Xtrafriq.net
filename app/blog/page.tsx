@@ -30,7 +30,7 @@ export default function BlogPage() {
               <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden">
                 <Image
                   src={featuredPost.image || "/placeholder.svg"}
-                  alt={featuredPost.title}
+                  alt={featuredPost.imageAlt || featuredPost.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -82,7 +82,7 @@ export default function BlogPage() {
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
                       src={post.image || "/placeholder.svg"}
-                      alt={post.title}
+                      alt={post.imageAlt || post.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
