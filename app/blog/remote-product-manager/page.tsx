@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import type { Metadata } from "next"
 import { siteUrl } from "@/lib/site"
-import { featuredPost } from "@/lib/blog-posts"
 
 const canonicalUrl = `${siteUrl}/blog/remote-product-manager`
 const ogImage = `${siteUrl}/remote-pm-success-tips.png`
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
       "Master the art of product management from anywhere. Discover strategies, tools, and mindsets that separate good remote PMs from great ones.",
     type: "article",
     url: canonicalUrl,
-    publishedTime: new Date(featuredPost.publishedAt).toISOString(),
+    publishedTime: new Date("2026-02-16").toISOString(),
     authors: ["Xtrafriq Team"],
     tags: ["Product Management", "Remote Work"],
     section: "Product Management",
@@ -82,7 +81,6 @@ export default function RemoteProductManagerPost() {
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <Badge variant="secondary">Product Management</Badge>
               <Badge variant="outline">Remote Work</Badge>
-              <span className="text-sm text-muted-foreground">Featured</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance leading-tight">

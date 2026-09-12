@@ -92,7 +92,7 @@ export default async function BlogPostPage({
           <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-8 border border-border">
             <Image
               src={post.image || "/placeholder.svg"}
-              alt={post.title}
+              alt={post.imageAlt || post.title}
               fill
               className="object-cover"
               priority
