@@ -1,9 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { site } from '@/lib/site'
-
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://xtrafriq.com').replace(/\/$/, '')
+import { site, siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',

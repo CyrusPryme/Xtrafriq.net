@@ -16,16 +16,26 @@ export function Contact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('loading')
     setErrorMessage('')
 
+    const submitted = new FormData(e.currentTarget)
+    const payload = {
+      name: String(submitted.get('name') ?? '').trim(),
+      email: String(submitted.get('email') ?? '').trim(),
+      message: String(submitted.get('message') ?? '').trim(),
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload)
       })
 
       const data = await response.json()
@@ -119,14 +129,21 @@ export function Contact() {
 
           {/* Contact Form */}
           <div className="glass-card rounded-2xl p-5 sm:p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              action="/api/contact"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="contact-name" className="block text-sm font-medium text-foreground mb-2">
                   Your Name
                 </label>
                 <Input
-                  id="name"
+                  id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => {
@@ -139,12 +156,14 @@ export function Contact() {
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="contact-email" className="block text-sm font-medium text-foreground mb-2">
                   Email Address
                 </label>
                 <Input
-                  id="email"
+                  id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={(e) => {
@@ -157,11 +176,12 @@ export function Contact() {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="contact-message" className="block text-sm font-medium text-foreground mb-2">
                   Your Message
                 </label>
                 <Textarea
-                  id="message"
+                  id="contact-message"
+                  name="message"
                   placeholder="Tell us about your project..."
                   rows={5}
                   value={formData.message}

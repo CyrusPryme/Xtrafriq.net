@@ -7,6 +7,7 @@ import { Menu, X, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import { useAuth } from "@/components/auth-provider"
+import { cn } from "@/lib/utils"
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -27,8 +28,29 @@ export function Header() {
     setMounted(true)
   }, [])
 
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false)
+    }
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [isMenuOpen])
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 border-b border-border",
+        isMenuOpen ? "bg-background" : "glass",
+      )}
+    >
       <a
         href="#content"
         className="skip-link absolute left-4 top-4 z-50 rounded-xl glass px-3 py-2 text-sm font-medium text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -115,13 +137,16 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-nav" className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col gap-2" aria-label="Mobile">
+          <div
+            id="mobile-nav"
+            className="md:hidden fixed inset-x-0 top-16 bottom-0 z-40 bg-background overflow-y-auto border-t border-border"
+          >
+            <nav className="flex flex-col gap-1 px-4 sm:px-6 py-4" aria-label="Mobile">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                  className="px-3 py-3 text-base text-foreground hover:bg-muted/50 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

@@ -6,14 +6,15 @@ import { HowWeOperate } from "@/components/how-we-operate"
 import { CaseStudies } from "@/components/case-studies"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-import { pageMetadata } from "@/lib/site"
+import { defaultTitle, pageMetadata } from "@/lib/site"
 
 export const metadata = pageMetadata({
-  title: "Home",
+  title: defaultTitle,
   description:
     "Product management and project management expertise in Africa—based in Accra, Ghana. We build, scale, and optimize digital products with innovation and trust.",
   path: "/",
-  ogTitle: "Xtrafriq Tech Consult | Product Management & Tech Services",
+  ogTitle: defaultTitle,
+  absoluteTitle: true,
 })
 
 export default function Home() {
