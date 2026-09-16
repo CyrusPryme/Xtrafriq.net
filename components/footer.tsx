@@ -25,7 +25,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <p className="font-semibold mb-4">Quick Links</p>
             <nav className="flex flex-col gap-3" aria-label="Footer navigation">
               <Link href="/services" className="text-background/70 hover:text-background transition-colors text-sm">
                 Services
@@ -46,7 +46,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <p className="font-semibold mb-4">Services</p>
             <nav className="flex flex-col gap-3" aria-label="Footer services">
               {FOOTER_SERVICES.map((service) => (
                 <Link

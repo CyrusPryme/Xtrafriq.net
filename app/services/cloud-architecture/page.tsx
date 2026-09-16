@@ -4,14 +4,14 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Cloud Architecture & Reliability",
   description:
-    "Scalable cloud foundations, cost optimization, and reliability practices—so your product stays fast, available, and secure as it grows.",
+    "Cloud foundations, cost control, and reliability practices so products stay fast and available as traffic, teams, and features grow.",
   path: "/services/cloud-architecture",
-  ogTitle: "Cloud Architecture & Reliability | Xtrafriq Services",
 })
 
 export default function CloudArchitecturePage() {
   return (
     <ServiceDetailPage
+      slug="cloud-architecture"
       title="Cloud Architecture & Reliability"
       description="We help you design cloud systems that are scalable, resilient, and cost-aware—so you can grow without firefighting."
       outcomes={[

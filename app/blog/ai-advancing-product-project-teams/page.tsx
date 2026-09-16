@@ -2,69 +2,30 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
-import Script from "next/script"
+import { JsonLd } from "@/components/json-ld"
 import { ArrowLeft, Calendar, Clock, User, Share2, Bookmark } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import type { Metadata } from "next"
-import { siteUrl } from "@/lib/site"
+import { getPostBySlug } from "@/lib/blog-posts"
+import { blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/json-ld"
+import { articleMetadata } from "@/lib/site"
 
-const canonicalUrl = `${siteUrl}/blog/ai-advancing-product-project-teams`
-const ogImage = `${siteUrl}/blog-ai-advancing-product-teams.png`
-const publishedAt = "2026-09-12"
+const post = getPostBySlug("ai-advancing-product-project-teams")!
 
-export const metadata: Metadata = {
-  title: "AI Is Moving Faster Than Your Process",
-  description:
-    "AI is compressing some work and inflating stakeholder expectations at the same time. Here is how product managers, project managers, and delivery leads keep scope, quality, and trust intact.",
-  alternates: { canonical: canonicalUrl },
-  openGraph: {
-    title: "AI Is Moving Faster Than Your Process: What Product and Project Teams Should Change Now",
-    description:
-      "AI is compressing some work and inflating stakeholder expectations at the same time. Here is how product managers, project managers, and delivery leads keep scope, quality, and trust intact.",
-    type: "article",
-    url: canonicalUrl,
-    publishedTime: new Date(publishedAt).toISOString(),
-    authors: ["Xtrafriq Team"],
-    tags: ["Product Management", "Project Delivery", "AI"],
-    section: "Product Management",
-    images: [{ url: ogImage }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AI Is Moving Faster Than Your Process",
-    description:
-      "AI is compressing some work and inflating stakeholder expectations at the same time. Here is how product managers, project managers, and delivery leads keep scope, quality, and trust intact.",
-    images: [ogImage],
-  },
-}
+export const metadata = articleMetadata(post)
 
 export default function AiAdvancingProductProjectTeamsPost() {
-  const blogPostingJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: "AI Is Moving Faster Than Your Process: What Product and Project Teams Should Change Now",
-    description:
-      "AI is compressing some work and inflating stakeholder expectations at the same time. Here is how product managers, project managers, and delivery leads keep scope, quality, and trust intact.",
-    image: [ogImage],
-    author: [{ "@type": "Organization", name: "Xtrafriq Team" }],
-    publisher: {
-      "@type": "Organization",
-      name: "Xtrafriq Tech Consult",
-      logo: { "@type": "ImageObject", url: `${siteUrl}/logo.jpg` },
-    },
-    mainEntityOfPage: canonicalUrl,
-    url: canonicalUrl,
-    datePublished: new Date(publishedAt).toISOString(),
-  }
-
   return (
     <>
-      <Script
-        id="ld-blog-ai-advancing-product-project-teams"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      <JsonLd
+        id="ld-breadcrumb-blog-ai-advancing-product-project-teams"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.seoTitle ?? post.title, path: `/blog/${post.slug}` },
+        ])}
       />
+      <JsonLd id="ld-blog-ai-advancing-product-project-teams" data={blogPostingJsonLd(post)} />
       <Header />
       <main className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-6 lg:px-8">

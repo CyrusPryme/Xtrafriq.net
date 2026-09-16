@@ -4,14 +4,14 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Product Strategy & Leadership",
   description:
-    "Product discovery, roadmaps, OKRs, and leadership to build digital products that scale—aligned to users, business goals, and execution realities.",
+    "Discovery, roadmaps, OKRs, and product leadership so Accra and remote teams know what to build, why it matters, and how execution stays aligned.",
   path: "/services/product-strategy",
-  ogTitle: "Product Strategy & Leadership | Xtrafriq Services",
 })
 
 export default function ProductStrategyPage() {
   return (
     <ServiceDetailPage
+      slug="product-strategy"
       title="Product Strategy & Leadership"
       description="We help teams move from ideas to outcomes—using structured discovery, roadmap discipline, and leadership that keeps execution aligned to real user value and business goals."
       outcomes={[

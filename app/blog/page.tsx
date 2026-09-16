@@ -1,13 +1,31 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Calendar, Clock, User } from "lucide-react"
 import { featuredPost, blogPosts } from "@/lib/blog-posts"
+import { blogJsonLd, breadcrumbJsonLd } from "@/lib/json-ld"
+import { pageMetadata } from "@/lib/site"
+
+export const metadata = pageMetadata({
+  title: "Product & Delivery Insights",
+  description:
+    "Writing on product management, project delivery, and building digital products from Accra—for teams shipping under real constraints.",
+  path: "/blog",
+})
 
 export default function BlogPage() {
   return (
     <>
+      <JsonLd
+        id="ld-breadcrumb-blog"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+        ])}
+      />
+      <JsonLd id="ld-blog" data={blogJsonLd()} />
       <Header />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -117,9 +135,9 @@ export default function BlogPage() {
 
           {/* Newsletter CTA */}
           <div className="mt-20 bg-gradient-to-br from-primary/10 via-accent/5 to-secondary rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               Stay Updated
-            </h3>
+            </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
               Subscribe to our newsletter for the latest insights on product management and tech innovation.
             </p>

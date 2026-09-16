@@ -6,12 +6,11 @@ import { HowWeOperate } from "@/components/how-we-operate"
 import { CaseStudies } from "@/components/case-studies"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-import { defaultTitle, pageMetadata } from "@/lib/site"
+import { defaultDescription, defaultTitle, pageMetadata } from "@/lib/site"
 
 export const metadata = pageMetadata({
   title: defaultTitle,
-  description:
-    "Product management and project management expertise in Africa—based in Accra, Ghana. We build, scale, and optimize digital products with innovation and trust.",
+  description: defaultDescription,
   path: "/",
   ogTitle: defaultTitle,
   absoluteTitle: true,

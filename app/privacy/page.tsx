@@ -1,30 +1,26 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import { site, siteUrl } from '@/lib/site'
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
+import { pageMetadata, policyUpdatedLabel, site } from "@/lib/site"
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  description: 'Privacy policy for Xtrafriq Tech Consult - how we collect, use, and protect your information.',
-  alternates: { canonical: `${siteUrl}/privacy` },
-  openGraph: {
-    title: 'Privacy Policy | Xtrafriq Tech Consult',
-    description: 'Privacy policy for Xtrafriq Tech Consult - how we collect, use, and protect your information.',
-    url: `${siteUrl}/privacy`,
-    type: 'website',
-    images: [{ url: `${siteUrl}/logo.jpg` }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Privacy Policy | Xtrafriq Tech Consult',
-    description: 'Privacy policy for Xtrafriq Tech Consult - how we collect, use, and protect your information.',
-    images: [`${siteUrl}/logo.jpg`],
-  },
-}
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
+  description:
+    "How Xtrafriq Tech Consult collects, uses, and protects information you share through this website and our contact form.",
+  path: "/privacy",
+})
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen">
+      <JsonLd
+        id="ld-breadcrumb-privacy"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Privacy Policy", path: "/privacy" },
+        ])}
+      />
       <div className="max-w-4xl mx-auto px-6 lg:px-8 py-24">
         <Link
           href="/"
@@ -79,14 +75,12 @@ export default function PrivacyPolicy() {
               </p>
               <div className="mt-2 space-y-1">
                 <p>Email: {site.contactEmail}</p>
-                <p>Phone: {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, '$1 $2 $3 $4')}</p>
+                <p>Phone: {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, "$1 $2 $3 $4")}</p>
               </div>
             </section>
 
             <section className="pt-6 border-t border-border">
-              <p className="text-sm">
-                Last updated: {new Date().toLocaleDateString()}
-              </p>
+              <p className="text-sm">Last updated: {policyUpdatedLabel}</p>
             </section>
           </div>
         </div>

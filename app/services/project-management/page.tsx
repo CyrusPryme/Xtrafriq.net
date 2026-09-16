@@ -4,9 +4,8 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Project Management (Technology + AI)",
   description:
-    "Project management for any industry—optimized with technology and AI to improve delivery speed, cost efficiency, and predictability.",
+    "End-to-end project leadership for software and non-software work—using tooling, automation, and AI to keep delivery faster, cheaper, and more predictable.",
   path: "/services/project-management",
-  ogTitle: "Project Management (Technology + AI) | Xtrafriq Services",
 })
 
 const examples = [
@@ -20,6 +19,7 @@ const examples = [
 export default function ProjectManagementPage() {
   return (
     <ServiceDetailPage
+      slug="project-management"
       title="Project Management (Technology + AI)"
       description="We manage projects beyond software. If your initiative can be made faster, cheaper, or more predictable through better tooling, automation, and AI-assisted workflows—this service is for you."
       outcomes={[

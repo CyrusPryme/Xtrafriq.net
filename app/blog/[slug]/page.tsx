@@ -1,12 +1,13 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import Script from "next/script"
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
 import { allPosts, getPostBySlug } from "@/lib/blog-posts"
-import { siteUrl } from "@/lib/site"
+import { blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/json-ld"
+import { articleMetadata } from "@/lib/site"
 
 export function generateStaticParams() {
   return allPosts.map((post) => ({ slug: post.slug }))
@@ -19,32 +20,10 @@ export async function generateMetadata({
 }) {
   const { slug } = await params
   const post = getPostBySlug(slug)
-  if (!post) return { title: "Post Not Found" }
-  const url = `${siteUrl}/blog/${post.slug}`
-  const image = `${siteUrl}${post.image}`
-  const publishedTime = new Date(post.publishedAt).toISOString()
-  return {
-    title: post.title,
-    description: post.excerpt,
-    alternates: { canonical: url },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      url,
-      publishedTime,
-      authors: [post.author],
-      tags: [post.category],
-      section: post.category,
-      images: [{ url: image }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [image],
-    },
+  if (!post) {
+    return { title: "Post Not Found", robots: { index: false, follow: false } }
   }
+  return articleMetadata(post)
 }
 
 export default async function BlogPostPage({
@@ -57,27 +36,17 @@ export default async function BlogPostPage({
 
   if (!post) notFound()
 
-  const postUrl = `${siteUrl}/blog/${post.slug}`
-
-  const blogPostingJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    image: [`${siteUrl}${post.image}`],
-    author: [{ "@type": "Organization", name: post.author }],
-    publisher: { "@type": "Organization", name: "Xtrafriq Tech Consult", logo: { "@type": "ImageObject", url: `${siteUrl}/logo.jpg` } },
-    mainEntityOfPage: postUrl,
-    url: postUrl,
-  }
-
   return (
     <>
-      <Script
-        id={`ld-blog-${post.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      <JsonLd
+        id={`ld-breadcrumb-blog-${post.slug}`}
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.seoTitle ?? post.title, path: `/blog/${post.slug}` },
+        ])}
       />
+      <JsonLd id={`ld-blog-${post.slug}`} data={blogPostingJsonLd(post)} />
       <Header />
       <main className="pt-24 pb-16">
         <article className="max-w-3xl mx-auto px-6 lg:px-8">
