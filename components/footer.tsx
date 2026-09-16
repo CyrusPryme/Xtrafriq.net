@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FOOTER_SERVICES } from "@/lib/services"
+import { primaryPositioning, site } from "@/lib/site"
 
 export function Footer() {
   return (
@@ -19,8 +20,18 @@ export function Footer() {
               <span className="font-semibold text-lg">Xtrafriq Tech Consult</span>
             </Link>
             <p className="text-background/70 leading-relaxed max-w-sm">
-              Transforming ideas into exceptional digital products through expert product management and
-              innovative tech solutions from Africa to the world.
+              Product Management & Technology Consulting Company. {primaryPositioning}
+            </p>
+            <p className="mt-4 text-sm text-background/70">
+              <a href={`mailto:${site.contactEmail}`} className="hover:text-background transition-colors">
+                {site.contactEmail}
+              </a>
+              <span className="mx-2 text-background/40" aria-hidden="true">
+                ·
+              </span>
+              <a href={`tel:${site.contactPhone}`} className="hover:text-background transition-colors">
+                {site.formattedPhone}
+              </a>
             </p>
           </div>
 
@@ -32,6 +43,9 @@ export function Footer() {
               </Link>
               <Link href="/about" className="text-background/70 hover:text-background transition-colors text-sm">
                 About Us
+              </Link>
+              <Link href="/company-profile" className="text-background/70 hover:text-background transition-colors text-sm">
+                Company profile
               </Link>
               <Link href="/clients" className="text-background/70 hover:text-background transition-colors text-sm">
                 Portfolio

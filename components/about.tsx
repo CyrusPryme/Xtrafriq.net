@@ -1,5 +1,7 @@
 import { CheckCircle2, Heart } from "lucide-react"
 import Image from "next/image"
+import { CompanyProfileDownloads } from "@/components/company-profile-downloads"
+import { companyIdentity, positioningPhrase, primaryPositioning } from "@/lib/site"
 
 const charityImages = [
   { src: "/about/charity-youth-soccer.png", alt: "Youth playing soccer—community programs supported by our charity partners" },
@@ -24,8 +26,16 @@ export function About() {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-balance">
               Product Leadership You Can Trust
             </h1>
+            <p className="text-sm font-medium text-primary mb-3">
+              {companyIdentity}
+            </p>
             <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary to-accent opacity-60" />
           </div>
+
+          <p className="text-muted-foreground mb-6 leading-relaxed">
+            Xtrafriq Tech Consult is a {companyIdentity}. Our commercial identity is {positioningPhrase}:{" "}
+            {primaryPositioning.charAt(0).toLowerCase() + primaryPositioning.slice(1)}
+          </p>
 
           {/* Mission & Vision */}
           <div className="grid sm:grid-cols-2 gap-6 mb-6">
@@ -88,6 +98,10 @@ export function About() {
                 />
               </div>
             ))}
+          </div>
+
+          <div className="mb-10">
+            <CompanyProfileDownloads />
           </div>
 
           {/* Charity Giving */}

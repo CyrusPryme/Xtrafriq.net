@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Boxes, BriefcaseBusiness } from "lucide-react"
+import { companyIdentity } from "@/lib/site"
 
 export function HowWeOperate() {
   return (
@@ -23,8 +24,8 @@ export function HowWeOperate() {
               <span className="text-gradient">Singular Focus.</span>
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg text-pretty mb-6">
-              A product-led studio that battle-tests strategies through its own ventures before applying the
-              same execution rigour to client work—powered by AI-optimized product and project management.
+              A {companyIdentity} that proves delivery approaches through its own product portfolio, then
+              applies the same execution rigour to client work.
             </p>
             <Link href="/about" className="inline-flex items-center gap-2 text-primary font-medium text-sm sm:text-base hover:gap-3 transition-all">
               Learn about us <ArrowRight className="w-4 h-4" />

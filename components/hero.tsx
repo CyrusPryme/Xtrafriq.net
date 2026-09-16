@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import Image from "next/image"
+import { positioningPhrase, primaryPositioning } from "@/lib/site"
 
 const trust = [
   "iSTC Ghana",
@@ -41,7 +42,7 @@ export function Hero() {
           <div className="lg:col-span-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-5">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Accra · Global Delivery
+              {positioningPhrase}
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance mb-4 sm:mb-6">
@@ -50,12 +51,11 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-6 text-pretty">
-              Product and project management from Accra to the world—AI-enhanced delivery for platforms teams
-              can trust.
+              {primaryPositioning}
             </p>
 
             <ul className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 mb-8 text-sm text-muted-foreground">
-              {["PM-led delivery", "AI-optimized", "50+ projects shipped"].map((item) => (
+              {["PM-led delivery", "Technology systems", "50+ projects shipped"].map((item) => (
                 <li key={item} className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                   {item}

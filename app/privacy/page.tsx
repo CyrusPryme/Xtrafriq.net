@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
               </p>
               <div className="mt-2 space-y-1">
                 <p>Email: {site.contactEmail}</p>
-                <p>Phone: {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, "$1 $2 $3 $4")}</p>
+                <p>Phone: {site.formattedPhone}</p>
               </div>
             </section>
 

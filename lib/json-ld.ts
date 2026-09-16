@@ -5,6 +5,7 @@ import {
   defaultDescription,
   defaultOgImage,
   logoImage,
+  positioningPhrase,
   site,
   siteName,
   siteUrl,
@@ -45,6 +46,7 @@ export function organizationJsonLd() {
     },
     image: absoluteUrl(defaultOgImage.path),
     description: defaultDescription,
+    slogan: positioningPhrase,
     email: site.contactEmail,
     telephone: site.contactPhone,
     address: {
@@ -113,7 +115,7 @@ export function blogJsonLd() {
     "@type": "Blog",
     name: `${siteName} Blog`,
     description:
-      "Writing on product management, project delivery, and building digital products from Accra.",
+      "Writing on product management, project delivery, and building digital products and technology systems.",
     url: absoluteUrl("/blog"),
     inLanguage: "en",
     publisher: { "@id": organizationId() },

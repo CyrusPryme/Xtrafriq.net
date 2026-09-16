@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Product & Tech Services",
   description:
-    "Product strategy, project delivery, enterprise platforms, app development, cybersecurity, cloud, and agile enablement—led from Accra for teams that need to ship.",
+    "Product strategy, project delivery, enterprise platforms, app development, cybersecurity, cloud, and agile enablement—Product Management-Led Technology Delivery for organisations that need to ship.",
   path: "/services",
 })
 
@@ -33,7 +33,7 @@ export default function ServicesPage() {
               Services built for modern product teams
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              Xtrafriq Tech Consult helps organizations design, build, and scale digital products with product
+              Xtrafriq Tech Consult helps organisations design, build, and scale digital products with product
               management at the core.
             </p>
           </div>
