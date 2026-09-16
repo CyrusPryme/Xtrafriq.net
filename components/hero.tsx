@@ -132,7 +132,7 @@ export function Hero() {
                     ))}
                   </div>
                   <div>
-                    <div className="text-xs font-semibold text-foreground">100+ clients</div>
+                    <div className="text-xs font-semibold text-foreground">40+ clients</div>
                     <div className="text-[10px] text-muted-foreground">10+ countries</div>
                   </div>
                 </div>

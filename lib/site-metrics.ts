@@ -3,7 +3,7 @@
  */
 export const SITE_METRICS = [
   { value: "50+", label: "Projects Delivered" },
-  { value: "100+", label: "Clients Served" },
+  { value: "40+", label: "Clients Served" },
   { value: "10+", label: "Countries Reached" },
   { value: "200+", label: "Entrepreneurs Trained" },
 ] as const

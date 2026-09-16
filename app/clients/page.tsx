@@ -46,6 +46,42 @@ const clients: PortfolioClient[] = [
     highlights: ["Curriculum + workshops", "Lightweight training systems", "Partner adoption support"],
   },
   {
+    name: "CEIBS Alumni",
+    logo: "/clients/ceibs-alumni.jpg",
+    category: "Alumni Network",
+    writeup:
+      "We built the digital platform that now runs the CEIBS Alumni Ghana Chapter—member directory, event operations, and chapter communications in one system—so alumni stay connected across cohorts, events run with less friction, and the council can engage a growing professional network from Accra.",
+    highlights: [
+      "Alumni directory and engagement",
+      "Event and chapter operations",
+      "Stronger network visibility across cohorts",
+    ],
+  },
+  {
+    name: "DistroGH",
+    logo: "/clients/distro-gh.png",
+    category: "Distribution & Consignment",
+    writeup:
+      "We built DistroGH, a private, large-scale consignment platform that now lets Ghana distributors run operations end-to-end in one system—vendor onboarding, catalog and stock receiving, supermarket deliveries, weekly sales imports, returns, deductions, and mobile money payouts, with full role-based access across every team.",
+    highlights: [
+      "End-to-end consignment operations",
+      "Sales imports, returns, and MoMo payouts",
+      "Role-based access for distributor teams",
+    ],
+  },
+  {
+    name: "EST Logistics",
+    logo: "/clients/est-logistics.png",
+    category: "Logistics & Freight",
+    writeup:
+      "We built the digital platform that now runs EST Logistics' freight forwarding and supply chain operations. Cargo movement, regulatory clearance, and partner coordination sit in one system—so Ghanaian businesses reach international markets with greater speed, visibility, and reliability.",
+    highlights: [
+      "End-to-end freight operations platform",
+      "Live shipment visibility and clearance workflows",
+      "Stronger Ghana-to-global cargo reliability",
+    ],
+  },
+  {
     name: "MyAfriqueMart",
     logo: "/clients/my-afrique-mart.jpg",
     category: "E-commerce",
@@ -150,7 +186,7 @@ export default function ClientsPage() {
                   key={client.name}
                   className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-full aspect-[3/2] relative rounded-lg overflow-hidden bg-muted/50 dark:bg-muted/30 border border-border mb-4">
+                  <div className="w-full aspect-[3/2] relative rounded-lg overflow-hidden bg-white border border-border mb-4">
                     <Image
                       src={client.logo}
                       alt={`${client.name} logo`}
