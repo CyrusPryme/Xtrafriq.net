@@ -51,11 +51,11 @@ export function Services() {
           </span>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
             Product Management-Led{" "}
-            <span className="text-gradient">Tech Services</span>
+            <span className="text-gradient">Technology Delivery</span>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg">
-            7+ years delivering complex digital platforms—with product and project management at the core,
-            AI-optimized where it accelerates clarity and delivery.
+            7+ years delivering complex digital platforms—with product and project management at the core of
+            every engagement.
           </p>
         </div>
 

@@ -96,8 +96,8 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Phone</div>
-                  <a href={`tel:${site.contactPhone.replace(/\s/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors">
-                    {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, '$1 $2 $3 $4')}
+                  <a href={`tel:${site.contactPhone}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    {site.formattedPhone}
                   </a>
                 </div>
               </div>

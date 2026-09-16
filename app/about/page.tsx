@@ -6,9 +6,9 @@ import { breadcrumbJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/site"
 
 export const metadata = pageMetadata({
-  title: "About the Studio",
+  title: "About Xtrafriq Tech Consult",
   description:
-    "Xtrafriq Tech Consult is an Accra studio combining product strategy, delivery leadership, and engineering to ship production-ready systems for African organisations and global teams.",
+    "Xtrafriq Tech Consult is a Product Management & Technology Consulting Company combining product strategy, delivery leadership, and engineering to ship production-ready systems for African organisations and global teams.",
   path: "/about",
 })
 

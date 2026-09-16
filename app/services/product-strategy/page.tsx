@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Product Strategy & Leadership",
   description:
-    "Discovery, roadmaps, OKRs, and product leadership so Accra and remote teams know what to build, why it matters, and how execution stays aligned.",
+    "Discovery, roadmaps, OKRs, and product leadership so teams know what to build, why it matters, and how execution stays aligned.",
   path: "/services/product-strategy",
 })
 

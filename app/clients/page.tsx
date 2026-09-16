@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Client Portfolio",
   description:
-    "Selected delivery work with organisations such as iSTC Ghana, GIZ, KTZ, and MyAfriqueMart—platforms, programs, and product leadership from Accra.",
+    "Selected delivery work with organisations such as iSTC Ghana, GIZ, KTZ, and MyAfriqueMart—platforms, programmes, and Product Management-Led Technology Delivery.",
   path: "/clients",
 })
 
@@ -141,7 +141,7 @@ export default function ClientsPage() {
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 text-balance">
               Trusted by Leading
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Organizations</span>
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Organisations</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
               We are proud to partner with innovative companies across Africa and beyond, 

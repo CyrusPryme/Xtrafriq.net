@@ -1,13 +1,39 @@
 import type { Metadata } from "next"
 import type { BlogPost } from "@/lib/blog-posts"
 
+/** Canonical public contact — never publish a Gmail address on marketing pages. */
+export const CANONICAL_CONTACT_EMAIL = "hello@xtrafriq.com"
+export const CANONICAL_CONTACT_PHONE = "+233243879212"
+export const CANONICAL_CONTACT_PHONE_DISPLAY = "+233 243 879 212"
+
+export const companyIdentity = "Product Management & Technology Consulting Company"
+export const positioningPhrase = "Product Management-Led Technology Delivery"
+export const primaryPositioning =
+  "We design, build and deliver digital products and technology systems that help organisations operate, grow and scale."
+
+function resolvePublicContactEmail(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim()
+  if (!fromEnv) return CANONICAL_CONTACT_EMAIL
+  if (/@gmail\.com$/i.test(fromEnv)) return CANONICAL_CONTACT_EMAIL
+  return fromEnv
+}
+
+export function formatContactPhone(phone: string): string {
+  const compact = phone.replace(/\s/g, "")
+  const match = compact.match(/^(\+\d{3})(\d{3})(\d{3})(\d+)$/)
+  if (!match) return phone
+  return `${match[1]} ${match[2]} ${match[3]} ${match[4]}`
+}
+
 /**
  * Site-wide contact and company info.
  * Override with env: NEXT_PUBLIC_CONTACT_EMAIL, NEXT_PUBLIC_CONTACT_PHONE
+ * Gmail addresses are ignored so a leftover env value cannot appear on public pages.
  */
 export const site = {
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@xtrafriq.com",
-  contactPhone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+233243879212",
+  contactEmail: resolvePublicContactEmail(),
+  contactPhone: process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || CANONICAL_CONTACT_PHONE,
+  formattedPhone: formatContactPhone(process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || CANONICAL_CONTACT_PHONE),
 } as const
 
 /**
@@ -23,17 +49,17 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL).re
 
 export const siteName = "Xtrafriq Tech Consult"
 
-export const defaultTitle = "Xtrafriq Tech Consult | Product Management & Tech Services"
+export const defaultTitle = "Xtrafriq Tech Consult | Product Management & Technology Consulting"
 
 export const defaultDescription =
-  "Accra-based product and project management studio. We help teams design, ship, and scale digital products across Africa and with remote clients worldwide."
+  "Product Management & Technology Consulting Company. We design, build and deliver digital products and technology systems that help organisations operate, grow and scale."
 
 /** Default social share image: landscape 1200x630, not the square logo. */
 export const defaultOgImage = {
   path: "/og-default.jpg",
   width: 1200,
   height: 630,
-  alt: "Xtrafriq Tech Consult — product management and tech services from Accra",
+  alt: "Xtrafriq Tech Consult — Product Management & Technology Consulting Company",
 } as const
 
 export const logoImage = {
@@ -44,7 +70,7 @@ export const logoImage = {
 } as const
 
 /** Last meaningful marketing-content update (not deploy time). */
-export const marketingContentUpdatedAt = "2026-09-12"
+export const marketingContentUpdatedAt = "2026-09-16"
 
 /** Privacy / terms copy last reviewed. */
 export const policyUpdatedAt = "2026-01-15"

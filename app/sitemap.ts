@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), lastModified: marketing, changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/about"), lastModified: marketing, changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/company-profile"), lastModified: marketing, changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl("/clients"), lastModified: marketing, changeFrequency: "monthly", priority: 0.7 },
     { url: absoluteUrl("/blog"), lastModified: blogIndex, changeFrequency: "weekly", priority: 0.8 },
     { url: absoluteUrl("/services"), lastModified: marketing, changeFrequency: "monthly", priority: 0.8 },

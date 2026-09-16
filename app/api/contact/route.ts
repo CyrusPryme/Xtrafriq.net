@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { site } from '@/lib/site'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-const TO_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@xtrafriq.com'
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL?.trim() || site.contactEmail
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? 'Xtrafriq Contact <onboarding@resend.dev>'
 
 async function readContactFields(request: NextRequest): Promise<{

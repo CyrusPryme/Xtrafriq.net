@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Product & Delivery Insights",
   description:
-    "Writing on product management, project delivery, and building digital products from Accra—for teams shipping under real constraints.",
+    "Writing on product management, project delivery, and building digital products and technology systems that help organisations operate, grow and scale.",
   path: "/blog",
 })
 
