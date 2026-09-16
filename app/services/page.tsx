@@ -2,20 +2,29 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { breadcrumbJsonLd, servicesCatalogJsonLd } from "@/lib/json-ld"
 import { SERVICES } from "@/lib/services"
 import { pageMetadata } from "@/lib/site"
 
 export const metadata = pageMetadata({
-  title: "Services",
+  title: "Product & Tech Services",
   description:
-    "Product and project management-led services: delivery leadership, enterprise platforms, mobile & web development, cybersecurity, cloud, agile enablement, and project optimization with technology and AI.",
+    "Product strategy, project delivery, enterprise platforms, app development, cybersecurity, cloud, and agile enablement—led from Accra for teams that need to ship.",
   path: "/services",
-  ogTitle: "Services | Xtrafriq Tech Consult",
 })
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        id="ld-breadcrumb-services"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ])}
+      />
+      <JsonLd id="ld-services-list" data={servicesCatalogJsonLd()} />
       <Header />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

@@ -4,14 +4,14 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Agile Delivery & Team Enablement",
   description:
-    "Structured sprint planning, QA gates, GitHub workflows, and team enablement to improve delivery speed, quality, and predictability.",
+    "Sprint discipline, QA gates, and GitHub workflows that help teams ship faster without trading away quality or predictability.",
   path: "/services/agile-delivery",
-  ogTitle: "Agile Delivery & Team Enablement | Xtrafriq Services",
 })
 
 export default function AgileDeliveryPage() {
   return (
     <ServiceDetailPage
+      slug="agile-delivery"
       title="Agile Delivery & Team Enablement"
       description="We bring execution discipline—so teams ship faster without sacrificing quality. Expect pragmatic agile, clean workflows, and lightweight metrics that help you continuously improve."
       outcomes={[

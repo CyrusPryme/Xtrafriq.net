@@ -3,14 +3,15 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 import { Building2, Globe, Layers, Users } from "lucide-react"
 import { SITE_METRICS } from "@/lib/site-metrics"
+import { JsonLd } from "@/components/json-ld"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/site"
 
 export const metadata = pageMetadata({
-  title: "Portfolio",
+  title: "Client Portfolio",
   description:
-    "Trusted by leading companies across Africa and beyond. See the organizations we've partnered with to deliver exceptional tech solutions.",
+    "Selected delivery work with organisations such as iSTC Ghana, GIZ, KTZ, and MyAfriqueMart—platforms, programs, and product leadership from Accra.",
   path: "/clients",
-  ogTitle: "Portfolio | Xtrafriq Tech Consult",
 })
 
 type PortfolioClient = {
@@ -86,6 +87,13 @@ const statIcons = [Layers, Building2, Globe, Users] as const
 export default function ClientsPage() {
   return (
     <div className="min-h-screen bg-background">
+      <JsonLd
+        id="ld-breadcrumb-clients"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Portfolio", path: "/clients" },
+        ])}
+      />
       <Header />
       
       <main className="pt-16">

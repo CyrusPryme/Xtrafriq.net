@@ -1,30 +1,36 @@
 import type { MetadataRoute } from "next"
-import { allPosts } from "@/lib/blog-posts"
+import { allPosts, latestPostDate } from "@/lib/blog-posts"
 import { SERVICES } from "@/lib/services"
-import { siteUrl } from "@/lib/site"
+import { absoluteUrl, marketingContentUpdatedAt, policyUpdatedAt } from "@/lib/site"
+
+function dateAt(isoDate: string): Date {
+  return new Date(`${isoDate}T00:00:00.000Z`)
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
+  const marketing = dateAt(marketingContentUpdatedAt)
+  const policy = dateAt(policyUpdatedAt)
+  const blogIndex = dateAt(latestPostDate())
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${siteUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${siteUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${siteUrl}/clients`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${siteUrl}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${siteUrl}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: absoluteUrl("/"), lastModified: marketing, changeFrequency: "weekly", priority: 1 },
+    { url: absoluteUrl("/about"), lastModified: marketing, changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/clients"), lastModified: marketing, changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/blog"), lastModified: blogIndex, changeFrequency: "weekly", priority: 0.8 },
+    { url: absoluteUrl("/services"), lastModified: marketing, changeFrequency: "monthly", priority: 0.8 },
     ...SERVICES.map((service) => ({
-      url: `${siteUrl}${service.href}`,
-      lastModified: now,
+      url: absoluteUrl(service.href),
+      lastModified: marketing,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    { url: `${siteUrl}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${siteUrl}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: absoluteUrl("/privacy"), lastModified: policy, changeFrequency: "yearly", priority: 0.3 },
+    { url: absoluteUrl("/terms"), lastModified: policy, changeFrequency: "yearly", priority: 0.3 },
   ]
 
   const blogRoutes: MetadataRoute.Sitemap = allPosts.map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
+    url: absoluteUrl(`/blog/${post.slug}`),
+    lastModified: dateAt(post.updatedAt ?? post.publishedAt),
     changeFrequency: "monthly",
     priority: 0.6,
   }))

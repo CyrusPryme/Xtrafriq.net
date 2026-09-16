@@ -4,14 +4,14 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Cybersecurity & Risk Management",
   description:
-    "Security assessments, threat modeling, secure SDLC, and risk controls to protect systems and user data as you scale.",
+    "Threat modeling, secure SDLC, and practical risk controls so you can ship quickly without leaving gaps that become expensive later.",
   path: "/services/cybersecurity",
-  ogTitle: "Cybersecurity & Risk Management | Xtrafriq Services",
 })
 
 export default function CybersecurityPage() {
   return (
     <ServiceDetailPage
+      slug="cybersecurity"
       title="Cybersecurity & Risk Management"
       description="Security isn’t a checkbox. We help you build the right controls early—so you can ship quickly without accumulating hidden risk that becomes expensive later."
       outcomes={[

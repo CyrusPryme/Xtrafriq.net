@@ -1,10 +1,14 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
+import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/json-ld"
+import { SERVICES } from "@/lib/services"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react"
 import type { ReactNode } from "react"
 
 type ServiceDetailProps = {
+  slug: string
   title: string
   description: string
   outcomes: string[]
@@ -15,6 +19,7 @@ type ServiceDetailProps = {
 }
 
 export function ServiceDetailPage({
+  slug,
   title,
   description,
   outcomes,
@@ -23,8 +28,23 @@ export function ServiceDetailPage({
   ctaLabel = "Start a conversation",
   children,
 }: ServiceDetailProps) {
+  const service = SERVICES.find((item) => item.slug === slug)
+
   return (
     <>
+      {service ? (
+        <>
+          <JsonLd
+            id={`ld-breadcrumb-${slug}`}
+            data={breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Services", path: "/services" },
+              { name: service.title, path: service.href },
+            ])}
+          />
+          <JsonLd id={`ld-service-${slug}`} data={serviceJsonLd(service)} />
+        </>
+      ) : null}
       <Header />
       <main className="pt-24 pb-16">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">

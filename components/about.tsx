@@ -21,23 +21,23 @@ export function About() {
         <div className="max-w-3xl mx-auto">
           <div className="mb-6">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-3">About Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-balance">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-balance">
               Product Leadership You Can Trust
-            </h2>
+            </h1>
             <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary to-accent opacity-60" />
           </div>
 
           {/* Mission & Vision */}
           <div className="grid sm:grid-cols-2 gap-6 mb-6">
             <div className="p-6 rounded-xl border border-border bg-secondary/40 backdrop-blur-sm">
-              <h4 className="text-sm font-semibold text-foreground mb-2">Our Mission</h4>
+              <h2 className="text-sm font-semibold text-foreground mb-2">Our Mission</h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 To help African organisations and startups transform ideas into production-ready digital
                 products by combining product-led strategy, engineering excellence, and local capacity building.
               </p>
             </div>
             <div className="p-6 rounded-xl border border-border bg-secondary/40 backdrop-blur-sm">
-              <h4 className="text-sm font-semibold text-foreground mb-2">Our Vision</h4>
+              <h2 className="text-sm font-semibold text-foreground mb-2">Our Vision</h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 To be the trusted partner for tech transformation across Africa—delivering scalable,
                 secure, and inclusive digital systems that drive socio-economic growth.
@@ -94,7 +94,7 @@ export function About() {
           <div className="mb-10 p-6 rounded-2xl bg-primary/5 border border-primary/10 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <Heart className="w-6 h-6 text-primary" />
-              <h4 className="text-lg font-semibold text-foreground">Giving Back</h4>
+              <h2 className="text-lg font-semibold text-foreground">Giving Back</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-4">
               We donate a portion of our proceeds to <strong className="text-foreground">Blacksheep Foundation</strong> and{' '}

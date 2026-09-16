@@ -1,30 +1,26 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import { site, siteUrl } from '@/lib/site'
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
+import { pageMetadata, policyUpdatedLabel, site } from "@/lib/site"
 
-export const metadata: Metadata = {
-  title: 'Terms of Service',
-  description: 'Terms of service for Xtrafriq Tech Consult - our terms and conditions for using our services.',
-  alternates: { canonical: `${siteUrl}/terms` },
-  openGraph: {
-    title: 'Terms of Service | Xtrafriq Tech Consult',
-    description: 'Terms of service for Xtrafriq Tech Consult - our terms and conditions for using our services.',
-    url: `${siteUrl}/terms`,
-    type: 'website',
-    images: [{ url: `${siteUrl}/logo.jpg` }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Terms of Service | Xtrafriq Tech Consult',
-    description: 'Terms of service for Xtrafriq Tech Consult - our terms and conditions for using our services.',
-    images: [`${siteUrl}/logo.jpg`],
-  },
-}
+export const metadata = pageMetadata({
+  title: "Terms of Service",
+  description:
+    "Terms that apply when you use the Xtrafriq Tech Consult website or engage us for product and technology services.",
+  path: "/terms",
+})
 
 export default function TermsOfService() {
   return (
     <div className="min-h-screen">
+      <JsonLd
+        id="ld-breadcrumb-terms"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Terms of Service", path: "/terms" },
+        ])}
+      />
       <div className="max-w-4xl mx-auto px-6 lg:px-8 py-24">
         <Link
           href="/"
@@ -104,15 +100,13 @@ export default function TermsOfService() {
               </p>
               <div className="mt-2 space-y-1">
                 <p>Email: {site.contactEmail}</p>
-                <p>Phone: {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, '$1 $2 $3 $4')}</p>
+                <p>Phone: {site.contactPhone.replace(/(\+\d{3})(\d{3})(\d{3})(\d+)/, "$1 $2 $3 $4")}</p>
                 <p>Location: Accra, Ghana | Remote Worldwide</p>
               </div>
             </section>
 
             <section className="pt-6 border-t border-border">
-              <p className="text-sm">
-                Last updated: {new Date().toLocaleDateString()}
-              </p>
+              <p className="text-sm">Last updated: {policyUpdatedLabel}</p>
             </section>
           </div>
         </div>

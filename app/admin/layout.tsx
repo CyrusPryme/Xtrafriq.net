@@ -1,30 +1,11 @@
-import type { Metadata } from "next"
-import { siteUrl } from "@/lib/site"
+import { noIndexMetadata } from "@/lib/site"
 
-export const metadata: Metadata = {
+export const metadata = noIndexMetadata({
   title: "Admin",
   description: "Admin dashboard for managing users and projects.",
-  alternates: { canonical: `${siteUrl}/admin` },
-  openGraph: {
-    title: "Admin | Xtrafriq Tech Consult",
-    description: "Admin dashboard for managing users and projects.",
-    url: `${siteUrl}/admin`,
-    type: "website",
-    images: [{ url: `${siteUrl}/logo.jpg` }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Admin | Xtrafriq Tech Consult",
-    description: "Admin dashboard for managing users and projects.",
-    images: [`${siteUrl}/logo.jpg`],
-  },
-  robots: {
-    index: false,
-    follow: false,
-  },
-}
+  path: "/admin",
+})
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return children
 }
-

@@ -4,14 +4,14 @@ import { pageMetadata } from "@/lib/site"
 export const metadata = pageMetadata({
   title: "Mobile & Web App Development",
   description:
-    "Production-ready mobile and web applications with product-led UX, performance, and maintainability—built to scale with your team and users.",
+    "Production-ready web and mobile apps with product-led UX, performance, and maintainable architecture—built to ship and to keep working as you grow.",
   path: "/services/mobile-web-development",
-  ogTitle: "Mobile & Web App Development | Xtrafriq Services",
 })
 
 export default function MobileWebDevelopmentPage() {
   return (
     <ServiceDetailPage
+      slug="mobile-web-development"
       title="Mobile & Web App Development"
       description="We build production-ready mobile and web applications with product-led UX, strong performance, and maintainable architecture."
       outcomes={[
